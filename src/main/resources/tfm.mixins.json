@@ -1,8 +1,10 @@
 {
   "required": true,
-  "package": "com.terrafirmagica.core.mixin",
+  "package": "com.terrafirmagica.core.mixins",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "common.minecraft.BlockEntityTypeAccessor"
+  ],
   "injectors": {
     "defaultRequire": 1
   },

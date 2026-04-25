@@ -1,5 +1,6 @@
 package com.terrafirmagica.core;
 
+import com.terrafirmagica.core.common.data.TFMBlockEntities;
 import com.terrafirmagica.core.config.TFMConfig;
 import com.tterrag.registrate.Registrate;
 import net.minecraft.resources.ResourceLocation;
