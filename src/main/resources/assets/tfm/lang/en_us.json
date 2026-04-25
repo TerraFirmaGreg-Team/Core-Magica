@@ -1,0 +1,13 @@
+{
+  "itemGroup.tfm": "Example Mod Tab",
+  "block.tfm.example_block": "Example Block",
+  "item.tfm.example_item": "Example Item",
+
+  "tfm.configuration.title": "TerraFirMagica-Core Configs",
+  "tfm.configuration.section.tfm.common.toml": "TerraFirMagica-Core Configs",
+  "tfm.configuration.section.tfm.common.toml.title": "TerraFirMagica-Core Configs",
+  "tfm.configuration.items": "Item List",
+  "tfm.configuration.logDirtBlock": "Log Dirt Block",
+  "tfm.configuration.magicNumberIntroduction": "Magic Number Text",
+  "tfm.configuration.magicNumber": "Magic Number"
+}
