@@ -11,9 +11,9 @@ import java.util.Set;
 @Mixin({ BlockEntityType.class })
 public interface BlockEntityTypeAccessor {
     @Accessor("validBlocks")
-    Set<Block> tfg$getValidBlocks();
+    Set<Block> tfm$getValidBlocks();
 
     @Accessor("validBlocks")
     @Mutable
-    void tfg$setValidBlocks(Set<Block> var1);
+    void tfm$setValidBlocks(Set<Block> var1);
 }

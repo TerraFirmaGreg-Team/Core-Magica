@@ -24,9 +24,9 @@ public class TFMBlockEntities {
         for (var key : beModification.keySet()) {
             var beType = (BlockEntityTypeAccessor) key.get();
             Set<Block> blocks = new HashSet<>();
-            blocks.addAll(beType.tfg$getValidBlocks());
+            blocks.addAll(beType.tfm$getValidBlocks());
             blocks.addAll(beModification.get(key));
-            beType.tfg$setValidBlocks(blocks);
+            beType.tfm$setValidBlocks(blocks);
         }
     }
 }
