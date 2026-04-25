@@ -11,9 +11,9 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
-@Mod(value = TerraFirMagicaCore.MODID, dist = Dist.CLIENT)
+@Mod(value = TFMCore.MODID, dist = Dist.CLIENT)
 // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-@EventBusSubscriber(modid = TerraFirMagicaCore.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = TFMCore.MODID, value = Dist.CLIENT)
 public class TerraFirMagicaCoreClient {
     public TerraFirMagicaCoreClient(ModContainer container) {
         // Allows NeoForge to create a config screen for this mod's configs.
@@ -25,7 +25,7 @@ public class TerraFirMagicaCoreClient {
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
         // Some client setup code
-        TerraFirMagicaCore.LOGGER.info("HELLO FROM CLIENT SETUP");
-        TerraFirMagicaCore.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        TFMCore.LOGGER.info("HELLO FROM CLIENT SETUP");
+        TFMCore.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
 }

@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -32,8 +31,8 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(TerraFirMagicaCore.MODID)
-public class TerraFirMagicaCore {
+@Mod(TFMCore.MODID)
+public class TFMCore {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "tfm";
     // Directly reference a slf4j logger
@@ -65,7 +64,7 @@ public class TerraFirMagicaCore {
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public TerraFirMagicaCore(IEventBus modEventBus, ModContainer modContainer) {
+    public TFMCore(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -77,7 +76,7 @@ public class TerraFirMagicaCore {
         CREATIVE_MODE_TABS.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (TerraFirMagicaCore) to respond directly to events.
+        // Note that this is necessary if and only if we want *this* class (TFMCore) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
