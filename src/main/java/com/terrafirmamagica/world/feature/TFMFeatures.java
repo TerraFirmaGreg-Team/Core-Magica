@@ -1,6 +1,5 @@
-package com.terrafirmagica.core.world.feature;
+package com.terrafirmamagica.world.feature;
 
-import com.terrafirmagica.core.world.feature.FixedEtherSourceFeature;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;

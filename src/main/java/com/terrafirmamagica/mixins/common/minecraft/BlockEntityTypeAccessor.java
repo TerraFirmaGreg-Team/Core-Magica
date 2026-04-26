@@ -1,4 +1,4 @@
-package com.terrafirmagica.core.mixins.common.minecraft;
+package com.terrafirmamagica.mixins.common.minecraft;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;

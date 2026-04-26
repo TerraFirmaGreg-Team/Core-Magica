@@ -1,8 +1,9 @@
 {
   "required": true,
-  "package": "com.terrafirmagica.core.mixins",
+  "package": "com.terrafirmamagica.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "common.registrate.AbstractRegistrateAccessor",
     "common.minecraft.BlockEntityTypeAccessor"
   ],
   "injectors": {

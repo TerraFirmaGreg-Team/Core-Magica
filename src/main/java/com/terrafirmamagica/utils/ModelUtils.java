@@ -1,4 +1,4 @@
-package com.terrafirmagica.core.utils;
+package com.terrafirmamagica.utils;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
