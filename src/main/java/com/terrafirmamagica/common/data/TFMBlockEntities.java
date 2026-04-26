@@ -1,6 +1,6 @@
-package com.terrafirmagica.core.common.data;
+package com.terrafirmamagica.common.data;
 
-import com.terrafirmagica.core.mixins.common.minecraft.BlockEntityTypeAccessor;
+import com.terrafirmamagica.mixins.common.minecraft.BlockEntityTypeAccessor;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.world.level.block.Block;
 

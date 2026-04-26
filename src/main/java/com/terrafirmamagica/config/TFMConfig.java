@@ -1,4 +1,4 @@
-package com.terrafirmagica.core.config;
+package com.terrafirmamagica.config;
 
 import java.util.List;
 

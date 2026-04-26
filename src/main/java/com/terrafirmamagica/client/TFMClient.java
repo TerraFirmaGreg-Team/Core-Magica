@@ -1,6 +1,6 @@
-package com.terrafirmagica.core.client;
+package com.terrafirmamagica.client;
 
-import com.terrafirmagica.core.TFMCore;
+import com.terrafirmamagica.TFMCore;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

@@ -1,4 +1,4 @@
-package com.terrafirmagica.core.world.feature;
+package com.terrafirmamagica.world.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
