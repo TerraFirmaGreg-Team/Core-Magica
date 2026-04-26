@@ -1,0 +1,11 @@
+[versions]
+registrate = "MC1.21-1.3.0+67"
+emi = "1.1.22+1.21.1"
+jade = "15.10.0+neoforge"
+etheria = "6927691"
+
+[libraries]
+registrate          = { module = "com.tterrag.registrate:Registrate", version.ref = "registrate" }
+emi                 = { module = "dev.emi:emi-neoforge", version.ref = "emi" }
+jade                = { module = "maven.modrinth:jade", version.ref = "jade" }
+etheria             = { module = "curse.maven:etheria-1100499", version.ref = "etheria"}

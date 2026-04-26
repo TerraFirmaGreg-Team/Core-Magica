@@ -1,0 +1,25 @@
+repositories {
+    mavenLocal()
+    mavenCentral()
+    // force gradle to download FastUtil & LWJGL from the central maven so we can get source artifacts
+    exclusiveContent { // Force
+        forRepository { mavenCentral() }
+        filter {
+            includeGroup("it.unimi.dsi")
+            includeGroup("org.lwjgl")
+        }
+    }
+
+    exclusiveContent { // Modrinth Maven
+        forRepository { maven { url = "https://api.modrinth.com/maven/" } }
+        filter { includeGroup("maven.modrinth") }
+    }
+    exclusiveContent { // Curseforge Maven
+        forRepository { maven { url = "https://cursemaven.com/" } }
+        filter { includeGroup("curse.maven") }
+    }
+    exclusiveContent { // tterrag - registrate
+        forRepository { maven { url = "https://maven.tterrag.com/" } }
+        filter { includeGroup("com.tterrag.registrate") }
+    }
+}

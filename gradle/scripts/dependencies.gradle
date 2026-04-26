@@ -1,0 +1,14 @@
+dependencies {
+    compileOnly 'org.jetbrains:annotations:26.0.+'
+    annotationProcessor 'org.jetbrains:annotations:26.0.+'
+
+    compileOnly 'org.projectlombok:lombok:1.18.+'
+    annotationProcessor 'org.projectlombok:lombok:1.18.+'
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.7:processor'
+
+    implementation jarJar(versions.registrate.get());
+
+    compileOnly versions.etheria.get()
+    localRuntime versions.etheria.get()
+}
