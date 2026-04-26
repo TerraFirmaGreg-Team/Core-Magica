@@ -18,8 +18,12 @@ repositories {
         forRepository { maven { url = "https://cursemaven.com/" } }
         filter { includeGroup("curse.maven") }
     }
-    exclusiveContent { // tterrag - registrate
-        forRepository { maven { url = "https://maven.tterrag.com/" } }
-        filter { includeGroup("com.tterrag.registrate") }
+
+    maven {
+        name "Tterrag"
+        url "https://mvn.devos.one/snapshots/"
+        content {
+            includeGroup("com.tterrag.registrate")
+        }
     }
 }

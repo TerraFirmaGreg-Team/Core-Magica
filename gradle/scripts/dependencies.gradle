@@ -10,5 +10,5 @@ dependencies {
     implementation jarJar(versions.registrate.get());
 
     compileOnly versions.etheria.get()
-    localRuntime versions.etheria.get()
+    //localRuntime versions.etheria.get()
 }
