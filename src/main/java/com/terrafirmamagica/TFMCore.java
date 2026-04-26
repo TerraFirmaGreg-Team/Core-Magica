@@ -1,8 +1,11 @@
 package com.terrafirmamagica;
 
+import com.terrafirmamagica.client.ClientInit;
 import com.terrafirmamagica.common.CommonInit;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,9 +29,11 @@ public class TFMCore {
     @ApiStatus.Internal
     public static IEventBus tfmModBus;
 
-    public TFMCore(IEventBus modBus, ModContainer modContainer) {
+    public TFMCore(IEventBus modBus, ModContainer container) {
         TFMCore.tfmModBus = modBus;
 
+        container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         CommonInit.init(modBus);
+        ClientInit.init(modBus);
     }
 }

@@ -26,4 +26,8 @@ repositories {
             includeGroup("com.tterrag.registrate")
         }
     }
+    maven {
+        name "TerraformersMC"
+        url "https://maven.terraformersmc.com/"
+    }
 }

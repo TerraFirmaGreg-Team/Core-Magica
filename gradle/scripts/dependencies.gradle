@@ -7,8 +7,24 @@ dependencies {
 
     annotationProcessor 'org.spongepowered:mixin:0.8.7:processor'
 
-    implementation jarJar(versions.registrate.get());
+    // Registrate
+    implementation jarJar(versions.registrate.get())
 
+    // EMI
+    compileOnly versions.emi.get()
+    localRuntime versions.emi.get()
+
+    // Jade
+    compileOnly versions.jade.get()
+    localRuntime versions.jade.get()
+
+    // TFC
+    compileOnly versions.patchouli.get()
+    localRuntime versions.patchouli.get()
+    compileOnly versions.tfc.get()
+    localRuntime versions.tfc.get()
+
+    // Etheria
     compileOnly versions.etheria.get()
-    //localRuntime versions.etheria.get()
+    localRuntime versions.etheria.get()
 }

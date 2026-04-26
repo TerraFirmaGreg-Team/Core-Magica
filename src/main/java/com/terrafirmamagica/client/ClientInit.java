@@ -1,7 +1,10 @@
 package com.terrafirmamagica.client;
 
+import com.terrafirmamagica.TFMCore;
+import net.minecraft.client.Minecraft;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 public class ClientInit {
@@ -11,6 +14,10 @@ public class ClientInit {
         ClientInit.modBus = modBus;
         modBus.register(ClientInit.class);
 
+    }
+
+    @SubscribeEvent
+    static void onClientSetup(FMLClientSetupEvent event) {
     }
 
     @SubscribeEvent
