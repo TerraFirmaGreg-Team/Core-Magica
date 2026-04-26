@@ -4,6 +4,7 @@ import com.terrafirmamagica.common.data.TFMBlockEntities;
 import com.terrafirmamagica.common.data.TFMBlocks;
 import com.terrafirmamagica.common.data.TFMCreativeTab;
 import com.terrafirmamagica.common.data.TFMItems;
+import com.terrafirmamagica.world.feature.TFMFeatures;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -22,11 +23,19 @@ public class CommonInit {
         TFMCreativeTab.init();
     }
 
+    private static boolean didRunRegistration = false;
+
     @SubscribeEvent
     public static void onRegister(RegisterEvent event) {
+        if (didRunRegistration) {
+            return;
+        }
+        didRunRegistration = true;
+
         TFMBlocks.init();
         TFMItems.init();
         TFMBlockEntities.init();
+        TFMFeatures.register(modBus);
     }
 
     @SubscribeEvent

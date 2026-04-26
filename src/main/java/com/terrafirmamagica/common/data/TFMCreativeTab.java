@@ -13,7 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 
-
+@SuppressWarnings("unused")
 public class TFMCreativeTab {
     public static RegistryEntry<CreativeModeTab, CreativeModeTab> TFM = REGISTRATE.defaultCreativeTab("tfm",
                     builder -> builder
