@@ -39,8 +39,8 @@ import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
+@SuppressWarnings("unused")
 public class TFMRegistrate extends AbstractRegistrate<TFMRegistrate> {
-    private static final Map<String, TFMRegistrate> EXISTING_REGISTRATES = new Object2ObjectOpenHashMap<>();
     private final AtomicBoolean registered = new AtomicBoolean(false);
 
     protected TFMRegistrate(String modId) {
@@ -52,39 +52,16 @@ public class TFMRegistrate extends AbstractRegistrate<TFMRegistrate> {
     }
 
     public static TFMRegistrate create(String modId) {
-        return create(modId, true);
-    }
-
-    public static TFMRegistrate create(String modId, boolean registerEvents) {
-        return innerCreate(modId, false, registerEvents);
-    }
-
-    @ApiStatus.Internal
-    public static TFMRegistrate createIgnoringListenerErrors(String modId) {
-        return innerCreate(modId, true, false);
-    }
-
-    private static TFMRegistrate innerCreate(String modId, boolean registerEvents, boolean requireValidEventBus) {
-        if (EXISTING_REGISTRATES.containsKey(modId)) {
-            return EXISTING_REGISTRATES.get(modId);
-        }
         var registrate = new TFMRegistrate(modId);
-        if (registerEvents) {
-            Optional<IEventBus> modEventBus = ModList.get().getModContainerById(modId).map(ModContainer::getEventBus);
-            if (requireValidEventBus) {
-                modEventBus.ifPresentOrElse(registrate::registerEventListeners, () -> {
-                    String message = "# [TFMRegistrate] Failed to register eventListeners for mod " + modId +
-                            ", This should be reported to this mod's dev #";
-                    String hashtags = "#".repeat(message.length());
-                    TFMCore.LOGGER.fatal(hashtags);
-                    TFMCore.LOGGER.fatal(message);
-                    TFMCore.LOGGER.fatal(hashtags);
-                });
-            } else {
-                registrate.registerEventListeners(modEventBus.orElse(TFMCore.tfmModBus));
-            }
-        }
-        EXISTING_REGISTRATES.put(modId, registrate);
+        Optional<IEventBus> modEventBus = ModList.get().getModContainerById(modId).map(ModContainer::getEventBus);
+        modEventBus.ifPresentOrElse(registrate::registerEventListeners, () -> {
+            String message = "# [TFMRegistrate] Failed to register eventListeners for mod " + modId +
+                    ", This should be reported to this mod's dev #";
+            String hashtags = "#".repeat(message.length());
+            TFMCore.LOGGER.fatal(hashtags);
+            TFMCore.LOGGER.fatal(message);
+            TFMCore.LOGGER.fatal(hashtags);
+        });
         return registrate;
     }
 

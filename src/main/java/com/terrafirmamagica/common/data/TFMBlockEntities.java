@@ -10,8 +10,7 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 public class TFMBlockEntities {
-    public static void init() {
-    }
+    public static void init() {}
 
     private static final Map<Supplier<?>, Set<Block>> beModification = new Object2ObjectOpenHashMap<>();
 

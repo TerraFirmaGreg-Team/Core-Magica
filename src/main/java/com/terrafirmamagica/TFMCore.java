@@ -1,15 +1,13 @@
 package com.terrafirmamagica;
 
-import com.terrafirmamagica.common.CommonProxy;
-import com.terrafirmamagica.config.TFMConfig;
-import com.terrafirmamagica.world.feature.TFMFeatures;
+import com.terrafirmamagica.common.CommonInit;
+import com.tterrag.registrate.util.RegistrateDistExecutor;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -31,8 +29,6 @@ public class TFMCore {
     public TFMCore(IEventBus modBus, ModContainer modContainer) {
         TFMCore.tfmModBus = modBus;
 
-        // Add Config here
-
-        CommonProxy.init(modBus);
+        CommonInit.init(modBus);
     }
 }
