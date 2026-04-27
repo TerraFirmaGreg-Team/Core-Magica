@@ -6,7 +6,7 @@ repositories {
         forRepository { mavenCentral() }
         filter {
             includeGroup("it.unimi.dsi")
-            includeGroup("org.lwjgl")
+            //includeGroup("org.lwjgl")
         }
     }
 

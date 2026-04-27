@@ -27,4 +27,8 @@ dependencies {
     // Etheria
     compileOnly versions.etheria.get()
     localRuntime versions.etheria.get()
+
+    // Totemic
+    compileOnly versions.totemic.get()
+    localRuntime versions.totemic.get()
 }

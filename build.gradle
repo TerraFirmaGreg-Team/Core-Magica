@@ -35,6 +35,9 @@ repositories {
     }
 
     maven { url 'https://cursemaven.com' }
+
+    // Pour les natives LWJGL manquants
+    maven { url 'https://libraries.minecraft.net' }
 }
 
 base {
