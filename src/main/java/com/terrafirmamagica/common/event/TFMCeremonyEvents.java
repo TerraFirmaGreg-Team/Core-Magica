@@ -105,10 +105,6 @@ public class TFMCeremonyEvents {
                             float newGrowth = Math.min(1.0f, crop.getGrowth() + 0.05f);
                             crop.setGrowth(newGrowth);
 
-                            // Trigger block update if mature - unsure if TFC doesn't do it already
-                            if (newGrowth >= 1.0f) {
-                                state.randomTick(level, pos, level.random);
-                            }
                         }
                     } else if (state.isRandomlyTicking() &&
                             state.is(TotemicBlockTags.ZAPHKIEL_WALTZ_GROWABLE)) {
