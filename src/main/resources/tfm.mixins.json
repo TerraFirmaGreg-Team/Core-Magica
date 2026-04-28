@@ -4,7 +4,9 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "common.registrate.AbstractRegistrateAccessor",
-    "common.minecraft.BlockEntityTypeAccessor"
+    "common.minecraft.BlockEntityTypeAccessor",
+    "common.hexalia.RitualTableBlockMixin",
+    "common.hexalia.RitualTableBlockEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

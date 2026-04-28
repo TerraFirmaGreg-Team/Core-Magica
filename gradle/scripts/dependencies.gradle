@@ -31,4 +31,9 @@ dependencies {
     // Totemic
     compileOnly versions.totemic.get()
     localRuntime versions.totemic.get()
+
+    //Hexalia
+    // Totemic
+    compileOnly versions.hexalia.get()
+    localRuntime versions.hexalia.get()
 }

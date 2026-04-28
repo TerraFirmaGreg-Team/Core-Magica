@@ -6,6 +6,7 @@ patchouli = "1.21.1-93-neoforge"
 tfc = "4.1.0"
 etheria = "6927691"
 totemic = "7126951"
+hexalia = "7960655"
 
 [libraries]
 registrate          = { module = "com.tterrag.registrate:Registrate", version.ref = "registrate" }
@@ -15,3 +16,4 @@ patchouli           = { module = "maven.modrinth:patchouli", version.ref = "patc
 tfc                 = { module = "maven.modrinth:terrafirmacraft", version.ref = "tfc" }
 etheria             = { module = "curse.maven:etheria-1100499", version.ref = "etheria"}
 totemic             = { module = "curse.maven:totemic-237541", version.ref = "totemic"}
+hexalia             = { module = "curse.maven:hexalia-962878", version.ref = "hexalia"}

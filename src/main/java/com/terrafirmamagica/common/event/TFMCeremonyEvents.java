@@ -15,6 +15,8 @@ import pokefenn.totemic.api.TotemicAPI;
 import pokefenn.totemic.api.TotemicBlockTags;
 import pokefenn.totemic.api.TotemicEntityUtil;
 import pokefenn.totemic.api.event.CeremonyEvent;
+import net.dries007.tfc.common.blocks.crop.ICropBlock;
+import net.dries007.tfc.common.blocks.crop.CropBlock;
 
 @EventBusSubscriber(modid = TFMCore.MOD_ID)
 public class TFMCeremonyEvents {
@@ -69,8 +71,8 @@ public class TFMCeremonyEvents {
         level.getEntitiesOfClass(TFCAnimal.class, aabb,
                 animal -> animal.getAgeType() == Age.CHILD
         ).forEach(animal -> {
-            if (level.random.nextInt(10) == 0) {
-                long acceleration = (long) (ICalendar.PLAYER_TICKS_IN_DEFAULT_DAY * animal.animalConfig().adulthoodDays().get() * 0.05);
+            if (level.random.nextInt(10) == 0) { // 1 = 100% / 2 = 50% / 10 = 10%
+                long acceleration = (long) (ICalendar.PLAYER_TICKS_IN_DEFAULT_DAY * animal.animalConfig().adulthoodDays().get() * 0.1); // 1.0 = Adult / 0.5 = 50% / 0.1 = 10%
                 animal.setBirthTick(animal.getBirthTick() - acceleration);
             }
         });
@@ -79,9 +81,9 @@ public class TFMCeremonyEvents {
         level.getEntitiesOfClass(Mammal.class, aabb,
                 animal -> !animal.isMale() && animal.isFertilized()
         ).forEach(pregnant -> {
-            if (level.random.nextInt(10) == 0) {
+            if (level.random.nextInt(10) == 0) { // 1 = 100% / 2 = 50% / 10 = 10%
                 pregnant.setPregnantTime(
-                        pregnant.getPregnantTime() - pregnant.getGestationDays() / 50
+                        pregnant.getPregnantTime() - pregnant.getGestationDays() / 10 //  1 = Instantly / 10 = 10% of reduction
                 );
             }
         });
@@ -100,11 +102,15 @@ public class TFMCeremonyEvents {
         TotemicAPI.get().ceremony().forEachBlockIn(level,
                 TotemicEntityUtil.getBoundingBoxAround(event.getPos(), 6),
                 (pos, state) -> {
-                    if (level.getBlockEntity(pos) instanceof CropBlockEntity crop) {
-                        if (level.random.nextInt(4) < 3) {
-                            float newGrowth = Math.min(1.0f, crop.getGrowth() + 0.05f);
+                    if (level.getBlockEntity(pos) instanceof CropBlockEntity crop
+                            && state.getBlock() instanceof CropBlock cropBlock) {
+                        if (level.random.nextInt(20) == 0) { // 1 = 100% / 2 = 50% / 10 = 10% / 20 = 5%
+                            float newGrowth = Math.min(1.0f, crop.getGrowth() + 0.05f); // 1.0 = Instant Maturity / 0.5 = 50% of growth / 0.1 = 10% / 0.01 = 1%
                             crop.setGrowth(newGrowth);
-
+                            int age = newGrowth >= 1.0f
+                                    ? cropBlock.getMaxAge()
+                                    : (int)(newGrowth * cropBlock.getMaxAge());
+                            level.setBlockAndUpdate(pos, state.setValue(cropBlock.getAgeProperty(), age));
                         }
                     } else if (state.isRandomlyTicking() &&
                             state.is(TotemicBlockTags.ZAPHKIEL_WALTZ_GROWABLE)) {
