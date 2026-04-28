@@ -41,7 +41,7 @@ public class RitualTableBlockMixin {
         }
     }
 
-    // Custom TFC values — lower than base mod because TFC crops are much slower
+    // Custom TFC values lower than base mod because TFC crops are much slower
     private static final int TFM_REQUIRED_CROPS = 4;
     private static final int TFM_CROP_RADIUS = 12;
 
