@@ -4,7 +4,9 @@ import com.terrafirmamagica.common.data.TFMBlockEntities;
 import com.terrafirmamagica.common.data.TFMBlocks;
 import com.terrafirmamagica.common.data.TFMCreativeTab;
 import com.terrafirmamagica.common.data.TFMItems;
+import com.terrafirmamagica.common.rite.PreserveFoodRiteFactory;
 import com.terrafirmamagica.world.feature.TFMFeatures;
+import net.favouriteless.enchanted.api.circle_magic.RiteFactoryRegistry;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -40,6 +42,9 @@ public class CommonInit {
 
     @SubscribeEvent
     public static void onCommonSetup(final FMLCommonSetupEvent event) {
-
+        RiteFactoryRegistry.get().register(
+                PreserveFoodRiteFactory.ID,
+                PreserveFoodRiteFactory.CODEC
+        );
     }
 }

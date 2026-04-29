@@ -3,6 +3,8 @@ package com.terrafirmamagica;
 import com.terrafirmamagica.client.ClientInit;
 import com.terrafirmamagica.common.CommonInit;
 import com.terrafirmamagica.common.ceremony.AnvilUpgradeCeremonyInstance;
+import com.terrafirmamagica.common.data.TFMFoodTraits;
+import com.terrafirmamagica.common.food.TFMFoodIngredient;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -21,6 +23,7 @@ import pokefenn.totemic.api.registry.RegistryAPI;
 
 @Mod(TFMCore.MOD_ID)
 public class TFMCore {
+
     public static final String MOD_ID = "tfm";
     public static final String NAME = "TerraFirmaMagica-Core";
     public static final Logger LOGGER = LogManager.getLogger(NAME);
@@ -52,15 +55,18 @@ public class TFMCore {
     public TFMCore(IEventBus modBus, ModContainer container) {
         TFMCore.tfmModBus = modBus;
 
-        CEREMONIES.register(modBus);  // ← ligne clé
+        CEREMONIES.register(modBus);
 
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         CommonInit.init(modBus);
         ClientInit.init(modBus);
+        TFMFoodIngredient.register(modBus);
+        TFMFoodTraits.register(modBus);
     }
 
     private static MusicInstrument instrument(String id) {
         return TotemicAPI.get().registry().instruments()
                 .get(ResourceLocation.parse(id));
     }
+
 }

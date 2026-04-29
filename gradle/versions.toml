@@ -7,6 +7,7 @@ tfc = "4.1.0"
 etheria = "6927691"
 totemic = "7126951"
 hexalia = "7960655"
+enchanted = "6948684"
 
 [libraries]
 registrate          = { module = "com.tterrag.registrate:Registrate", version.ref = "registrate" }
@@ -17,3 +18,4 @@ tfc                 = { module = "maven.modrinth:terrafirmacraft", version.ref =
 etheria             = { module = "curse.maven:etheria-1100499", version.ref = "etheria"}
 totemic             = { module = "curse.maven:totemic-237541", version.ref = "totemic"}
 hexalia             = { module = "curse.maven:hexalia-962878", version.ref = "hexalia"}
+enchanted           = { module = "curse.maven:enchanted-witchcraft-560363", version.ref = "enchanted"}

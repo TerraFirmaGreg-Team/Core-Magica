@@ -32,8 +32,11 @@ dependencies {
     compileOnly versions.totemic.get()
     localRuntime versions.totemic.get()
 
-    //Hexalia
-    // Totemic
+    // Hexalia
     compileOnly versions.hexalia.get()
     localRuntime versions.hexalia.get()
+
+    // Enchanted
+    compileOnly files('build/libs/enchanted-neoforge-1.21.1-4.2.3.jar')
+    localRuntime files('build/libs/enchanted-neoforge-1.21.1-4.2.3.jar')
 }
