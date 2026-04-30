@@ -7,7 +7,8 @@
     "common.minecraft.BlockEntityTypeAccessor",
     "common.hexalia.RitualTableBlockMixin",
     "common.hexalia.RitualTableBlockEntityMixin",
-    "common.hexalia.SmallCauldronBlockMixin"
+    "common.hexalia.SmallCauldronBlockMixin",
+    "common.hexalia.RitualBrazierBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
