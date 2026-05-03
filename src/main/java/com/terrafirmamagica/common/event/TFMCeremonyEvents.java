@@ -7,8 +7,15 @@ import net.dries007.tfc.common.entities.livestock.Mammal;
 import net.dries007.tfc.common.entities.livestock.TFCAnimal;
 import net.dries007.tfc.util.calendar.Calendars;
 import net.dries007.tfc.util.calendar.ICalendar;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import pokefenn.totemic.api.TotemicAPI;
@@ -17,6 +24,8 @@ import pokefenn.totemic.api.TotemicEntityUtil;
 import pokefenn.totemic.api.event.CeremonyEvent;
 import net.dries007.tfc.common.blocks.crop.ICropBlock;
 import net.dries007.tfc.common.blocks.crop.CropBlock;
+import pokefenn.totemic.init.ModBlocks;
+import pokefenn.totemic.util.MiscUtil;
 
 @EventBusSubscriber(modid = TFMCore.MOD_ID)
 public class TFMCeremonyEvents {
@@ -30,6 +39,8 @@ public class TFMCeremonyEvents {
         if (event.getContext().getTime() % 20 != 0) return;
 
         event.setCanceled(true);
+
+        transformSaplings(level, event.getPos());
 
         var aabb = TotemicEntityUtil.getAABBAround(event.getPos(), 8);
 
@@ -121,5 +132,21 @@ public class TFMCeremonyEvents {
                     }
                 }
         );
+
+    }
+    private static final ResourceLocation AFC_CEDAR_SAPLING = ResourceLocation.parse("afc:wood/sapling/redcedar");
+
+    private static void transformSaplings(Level level, BlockPos pos) {Block afcCedar = BuiltInRegistries.BLOCK.get(AFC_CEDAR_SAPLING);
+
+        BlockPos.betweenClosedStream(TotemicEntityUtil.getBoundingBoxAround(pos, 6))
+                .filter(p -> {
+                    var state = level.getBlockState(p);
+                    return state.is(BlockTags.SAPLINGS) && state.getBlock() != afcCedar;
+                })
+                .findAny()
+                .ifPresent(p -> {
+                    level.setBlock(p, afcCedar.defaultBlockState(), Block.UPDATE_ALL);
+                    MiscUtil.spawnServerParticles(ParticleTypes.HAPPY_VILLAGER, level, Vec3.atCenterOf(p), 10, new Vec3(0.5, 0.5, 0.5), 0);
+                });
     }
 }
