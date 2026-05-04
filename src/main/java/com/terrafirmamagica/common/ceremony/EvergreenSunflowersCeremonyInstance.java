@@ -1,7 +1,9 @@
 package com.terrafirmamagica.common.ceremony;
 
 import net.dries007.tfc.common.blocks.TFCBlockStateProperties;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.plant.ITallPlant;
+import net.dries007.tfc.common.blocks.plant.Plant;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -17,6 +19,8 @@ import pokefenn.totemic.api.ceremony.CeremonyInstance;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static net.dries007.tfc.common.blocks.TFCBlocks.PLANTS;
 
 public enum EvergreenSunflowersCeremonyInstance implements CeremonyInstance {
     INSTANCE;
@@ -46,7 +50,7 @@ public enum EvergreenSunflowersCeremonyInstance implements CeremonyInstance {
                 }
             }
 
-            level.setBlock(plantPos, Blocks.DANDELION.defaultBlockState(), 3);
+            level.setBlock(plantPos, PLANTS.get(Plant.DANDELION).get().defaultBlockState(), 3);
         }
     }
 
