@@ -13,6 +13,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
@@ -118,9 +119,11 @@ public class TFMCeremonyEvents {
                         if (level.random.nextInt(20) == 0) { // 1 = 100% / 2 = 50% / 10 = 10% / 20 = 5%
                             float newGrowth = Math.min(1.0f, crop.getGrowth() + 0.05f); // 1.0 = Instant Maturity / 0.5 = 50% of growth / 0.1 = 10% / 0.01 = 1%
                             crop.setGrowth(newGrowth);
+                            crop.setYield(Math.min(1.0f, crop.getYield() + 0.01f));
+                            crop.setChanged();
                             int age = newGrowth >= 1.0f
                                     ? cropBlock.getMaxAge()
-                                    : (int)(newGrowth * cropBlock.getMaxAge());
+                                    : Mth.floor(newGrowth * cropBlock.getMaxAge());
                             level.setBlockAndUpdate(pos, state.setValue(cropBlock.getAgeProperty(), age));
                         }
                     } else if (state.isRandomlyTicking() &&

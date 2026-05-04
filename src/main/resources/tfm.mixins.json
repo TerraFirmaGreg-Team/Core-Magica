@@ -3,12 +3,13 @@
   "package": "com.terrafirmamagica.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "common.registrate.AbstractRegistrateAccessor",
-    "common.minecraft.BlockEntityTypeAccessor",
-    "common.hexalia.RitualTableBlockMixin",
+    "common.hexalia.AstrylisBlockEntityMixin",
+    "common.hexalia.RitualBrazierBlockMixin",
     "common.hexalia.RitualTableBlockEntityMixin",
+    "common.hexalia.RitualTableBlockMixin",
     "common.hexalia.SmallCauldronBlockMixin",
-    "common.hexalia.RitualBrazierBlockMixin"
+    "common.minecraft.BlockEntityTypeAccessor",
+    "common.registrate.AbstractRegistrateAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
