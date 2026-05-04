@@ -9,5 +9,6 @@
   "tfm.configuration.items": "Item List",
   "tfm.configuration.logDirtBlock": "Log Dirt Block",
   "tfm.configuration.magicNumberIntroduction": "Magic Number Text",
-  "tfm.configuration.magicNumber": "Magic Number"
+  "tfm.configuration.magicNumber": "Magic Number",
+  "tfm.ceremony.evergreen_sunflowers.missing_plants": "Nothing can be transformed here"
 }

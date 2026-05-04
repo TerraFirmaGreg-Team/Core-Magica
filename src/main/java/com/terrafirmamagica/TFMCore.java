@@ -3,6 +3,7 @@ package com.terrafirmamagica;
 import com.terrafirmamagica.client.ClientInit;
 import com.terrafirmamagica.common.CommonInit;
 import com.terrafirmamagica.common.ceremony.AnvilUpgradeCeremonyInstance;
+import com.terrafirmamagica.common.ceremony.EvergreenSunflowersCeremonyInstance;
 import com.terrafirmamagica.common.data.TFMFoodTraits;
 import com.terrafirmamagica.common.food.TFMFoodIngredient;
 import net.minecraft.resources.ResourceLocation;
@@ -42,6 +43,17 @@ public class TFMCore {
                             () -> AnvilUpgradeCeremonyInstance.INSTANCE,
                             () -> instrument("totemic:rattle"),
                             () -> instrument("totemic:eagle_bone_whistle")
+                    )
+            );
+
+    public static final DeferredHolder<Ceremony, Ceremony> EVERGREEN_SUNFLOWERS =
+            CEREMONIES.register("evergreen", () ->
+                    new Ceremony(
+                            2000,
+                            20 * 20,
+                            () -> EvergreenSunflowersCeremonyInstance.INSTANCE,
+                            () -> instrument("totemic:rattle"),
+                            () -> instrument("totemic:flute")
                     )
             );
 
