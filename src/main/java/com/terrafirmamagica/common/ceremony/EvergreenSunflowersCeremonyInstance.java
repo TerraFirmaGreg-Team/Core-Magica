@@ -1,5 +1,6 @@
 package com.terrafirmamagica.common.ceremony;
 
+import com.terrafirmamagica.TFMCore;
 import net.dries007.tfc.common.blocks.TFCBlockStateProperties;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.plant.ITallPlant;
@@ -9,6 +10,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -38,7 +40,11 @@ public enum EvergreenSunflowersCeremonyInstance implements CeremonyInstance {
         List<BlockPos> plants = findTaggedBlocks(level, pos, RANGE);
         if (plants.isEmpty()) return;
 
+        RandomSource random = level.getRandom();
+
         for (BlockPos plantPos : plants) {
+            if (random.nextFloat() > 0.005f) continue;
+
             BlockState state = level.getBlockState(plantPos);
 
             if (state.hasProperty(TFCBlockStateProperties.TALL_PLANT_PART)) {
@@ -52,6 +58,11 @@ public enum EvergreenSunflowersCeremonyInstance implements CeremonyInstance {
 
             level.setBlock(plantPos, PLANTS.get(Plant.DANDELION).get().defaultBlockState(), 3);
         }
+    }
+
+    @Override
+    public int getEffectTime() {
+        return 20 * 20;
     }
 
     @Override
