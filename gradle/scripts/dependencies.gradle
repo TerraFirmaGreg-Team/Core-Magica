@@ -37,6 +37,11 @@ dependencies {
     localRuntime versions.hexalia.get()
 
     // Enchanted
-    compileOnly files('build/libs/enchanted-neoforge-1.21.1-4.2.3.jar')
-    localRuntime files('build/libs/enchanted-neoforge-1.21.1-4.2.3.jar')
+    compileOnly versions.enchanted.get()
+    localRuntime versions.enchanted.get()
+
+    // OTHER MOD DEPENDENCIES
+    localRuntime versions.modopedia.get()
+    localRuntime versions.geckolib.get()
+    localRuntime versions.stateobserver.get()
 }

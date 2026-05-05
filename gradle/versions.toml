@@ -4,10 +4,13 @@ emi = "1.1.22+1.21.1"
 jade = "15.10.0+neoforge"
 patchouli = "1.21.1-93-neoforge"
 tfc = "4.1.0"
-etheria = "6927691"
-totemic = "7126951"
-hexalia = "7960655"
-enchanted = "6948684"
+etheria = "0.2.6.2"
+totemic = "1.21.1-0.12.18"
+hexalia = "1.3.1-1.21.1+neoforge"
+enchanted = "4.2.3"
+modopedia = "1.1.11"
+geckolib = "gFmrC8Ru"
+stateobserver = "UBLIkKTR"
 
 [libraries]
 registrate          = { module = "com.tterrag.registrate:Registrate", version.ref = "registrate" }
@@ -15,7 +18,10 @@ emi                 = { module = "dev.emi:emi-neoforge", version.ref = "emi" }
 jade                = { module = "maven.modrinth:jade", version.ref = "jade" }
 patchouli           = { module = "maven.modrinth:patchouli", version.ref = "patchouli" }
 tfc                 = { module = "maven.modrinth:terrafirmacraft", version.ref = "tfc" }
-etheria             = { module = "curse.maven:etheria-1100499", version.ref = "etheria"}
-totemic             = { module = "curse.maven:totemic-237541", version.ref = "totemic"}
-hexalia             = { module = "curse.maven:hexalia-962878", version.ref = "hexalia"}
-enchanted           = { module = "curse.maven:enchanted-witchcraft-560363", version.ref = "enchanted"}
+etheria             = { module = "maven.modrinth:etheria", version.ref = "etheria" }
+totemic             = { module = "maven.modrinth:fenns_totemic", version.ref = "totemic" }
+hexalia             = { module = "maven.modrinth:hexalia", version.ref = "hexalia" }
+enchanted           = { module = "maven.modrinth:enchanted-witchcraft", version.ref = "enchanted" }
+modopedia           = { module = "maven.modrinth:modopedia", version.ref = "modopedia" }
+geckolib            = { module = "maven.modrinth:geckolib", version.ref = "geckolib" }
+stateobserver       = { module = "maven.modrinth:stateobserver", version.ref = "stateobserver" }
