@@ -9,7 +9,8 @@
     "common.hexalia.RitualTableBlockMixin",
     "common.hexalia.SmallCauldronBlockMixin",
     "common.minecraft.BlockEntityTypeAccessor",
-    "common.registrate.AbstractRegistrateAccessor"
+    "common.registrate.AbstractRegistrateAccessor",
+    "common.hexalia.CacofeyHarvestGoalMixin"
   ],
   "injectors": {
     "defaultRequire": 1
