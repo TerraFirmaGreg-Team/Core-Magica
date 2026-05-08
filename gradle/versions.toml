@@ -9,6 +9,7 @@ totemic = "1.21.1-0.12.18"
 hexalia = "1.3.1-1.21.1+neoforge"
 enchanted = "4.2.3"
 modopedia = "1.1.11"
+hexerei = "0.5.0.3"
 geckolib = "gFmrC8Ru"
 stateobserver = "UBLIkKTR"
 
@@ -21,6 +22,7 @@ tfc                 = { module = "maven.modrinth:terrafirmacraft", version.ref =
 etheria             = { module = "maven.modrinth:etheria", version.ref = "etheria" }
 totemic             = { module = "maven.modrinth:fenns_totemic", version.ref = "totemic" }
 hexalia             = { module = "maven.modrinth:hexalia", version.ref = "hexalia" }
+hexerei             = { module = "maven.modrinth:hexerei", version.ref = "hexerei" }
 enchanted           = { module = "maven.modrinth:enchanted-witchcraft", version.ref = "enchanted" }
 modopedia           = { module = "maven.modrinth:modopedia", version.ref = "modopedia" }
 geckolib            = { module = "maven.modrinth:geckolib", version.ref = "geckolib" }

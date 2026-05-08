@@ -40,6 +40,10 @@ dependencies {
     compileOnly versions.enchanted.get()
     localRuntime versions.enchanted.get()
 
+    // Hexerei
+    compileOnly versions.hexerei.get()
+    localRuntime versions.hexerei.get()
+
     // OTHER MOD DEPENDENCIES
     localRuntime versions.modopedia.get()
     localRuntime versions.geckolib.get()
