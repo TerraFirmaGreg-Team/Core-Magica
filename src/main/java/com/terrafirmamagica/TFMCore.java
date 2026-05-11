@@ -74,6 +74,7 @@ public class TFMCore {
         ClientInit.init(modBus);
         TFMFoodIngredient.register(modBus);
         TFMFoodTraits.register(modBus);
+        modBus.addListener(com.terrafirmamagica.compat.hexalia.ModSpawnPlacements::register);
     }
 
     private static MusicInstrument instrument(String id) {
