@@ -1,15 +1,19 @@
 package com.terrafirmamagica.compat.emi;
 
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
+
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.emi.emi.api.recipe.EmiRecipe;
-import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import dev.emi.emi.api.stack.EmiIngredient;
-import dev.emi.emi.api.stack.EmiStack;
-import dev.emi.emi.api.widget.Bounds;
-import dev.emi.emi.api.widget.Widget;
-import dev.emi.emi.api.widget.WidgetHolder;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -22,15 +26,14 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.SpawnEggItem;
-import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import dev.emi.emi.api.recipe.EmiRecipe;
+import dev.emi.emi.api.recipe.EmiRecipeCategory;
+import dev.emi.emi.api.stack.EmiIngredient;
+import dev.emi.emi.api.stack.EmiStack;
+import dev.emi.emi.api.widget.Bounds;
+import dev.emi.emi.api.widget.Widget;
+import dev.emi.emi.api.widget.WidgetHolder;
 
 public class MobSpawnInfoRecipe implements EmiRecipe {
 
@@ -110,9 +113,11 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
 
             @Override
             public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-                if (Minecraft.getInstance().level == null) return;
+                if (Minecraft.getInstance().level == null)
+                    return;
                 LivingEntity entity = getOrCreateEntity(data.entityType(), data.entityId());
-                if (entity == null) return;
+                if (entity == null)
+                    return;
 
                 Window window = Minecraft.getInstance().getWindow();
                 PoseStack poseStack = guiGraphics.pose();
@@ -123,8 +128,8 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
                 int screenX = Math.round((topLeftClip.x / topLeftClip.w + 1) / 2f * window.getGuiScaledWidth());
                 int screenY = Math.round((1 - topLeftClip.y / topLeftClip.w) / 2f * window.getGuiScaledHeight());
 
-                int bx  = entityCenterX - ENTITY_SIZE / 2;
-                int by  = entityY;
+                int bx = entityCenterX - ENTITY_SIZE / 2;
+                int by = entityY;
                 int bx2 = entityCenterX + ENTITY_SIZE / 2;
                 int by2 = entityY + ENTITY_SIZE;
 
@@ -167,35 +172,33 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
         int seasonColor = getSeasonsColor(data.seasons());
         widgets.addText(
                 Component.translatable("tfm.emi.spawn.label.seasons").append(
-                        Component.literal(seasonsStr).withStyle(s -> s.withColor(seasonColor))
-                ).getVisualOrderText(),
+                        Component.literal(seasonsStr).withStyle(s -> s.withColor(seasonColor))).getVisualOrderText(),
                 PADDING, y, 0x000000, false);
         y += LINE_H;
 
         // Spawn type
         String spawnTypeKey = switch (data.spawnType()) {
             case SURFACE -> "tfm.emi.spawn.type.surface";
-            case CAVE    -> "tfm.emi.spawn.type.cave";
-            case BOTH    -> "tfm.emi.spawn.type.both";
-            case WATER   -> "tfm.emi.spawn.type.water";
-            case SHORE   -> "tfm.emi.spawn.type.shore";
+            case CAVE -> "tfm.emi.spawn.type.cave";
+            case BOTH -> "tfm.emi.spawn.type.both";
+            case WATER -> "tfm.emi.spawn.type.water";
+            case SHORE -> "tfm.emi.spawn.type.shore";
         };
         widgets.addText(
                 Component.translatable("tfm.emi.spawn.label.spawn").append(
-                        Component.translatable(spawnTypeKey).withStyle(ChatFormatting.DARK_GRAY)
-                ).getVisualOrderText(),
+                        Component.translatable(spawnTypeKey).withStyle(ChatFormatting.DARK_GRAY)).getVisualOrderText(),
                 PADDING, y, 0x000000, false);
         y += LINE_H;
 
         // Day time if not all
         if (data.dayTime() != MobSpawnData.DayTime.ALL) {
             String dtKey = data.dayTime() == MobSpawnData.DayTime.NIGHT
-                    ? "tfm.emi.spawn.time.night" : "tfm.emi.spawn.time.day";
+                    ? "tfm.emi.spawn.time.night"
+                    : "tfm.emi.spawn.time.day";
             int dtColor = data.dayTime() == MobSpawnData.DayTime.NIGHT ? 0x3333AA : 0xFFAA00;
             widgets.addText(
                     Component.translatable("tfm.emi.spawn.label.time").append(
-                            Component.translatable(dtKey).withStyle(s -> s.withColor(dtColor))
-                    ).getVisualOrderText(),
+                            Component.translatable(dtKey).withStyle(s -> s.withColor(dtColor))).getVisualOrderText(),
                     PADDING, y, 0x000000, false);
             y += LINE_H;
         }
@@ -205,8 +208,8 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
             widgets.addText(
                     Component.translatable("tfm.emi.spawn.label.temp").append(
                             Component.literal(buildRangeStr(data.minTemperature(), data.maxTemperature(), "°C"))
-                                    .withStyle(ChatFormatting.DARK_BLUE)
-                    ).getVisualOrderText(),
+                                    .withStyle(ChatFormatting.DARK_BLUE))
+                            .getVisualOrderText(),
                     PADDING, y, 0x000000, false);
             y += LINE_H;
         }
@@ -216,8 +219,8 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
             widgets.addText(
                     Component.translatable("tfm.emi.spawn.label.humidity").append(
                             Component.literal(buildRangeStr(data.minGroundwater(), data.maxGroundwater(), "mm"))
-                                    .withStyle(ChatFormatting.DARK_AQUA)
-                    ).getVisualOrderText(),
+                                    .withStyle(ChatFormatting.DARK_AQUA))
+                            .getVisualOrderText(),
                     PADDING, y, 0x000000, false);
             y += LINE_H;
         }
@@ -227,8 +230,8 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
             widgets.addText(
                     Component.translatable("tfm.emi.spawn.label.forest").append(
                             Component.literal(buildRangeStr(data.minForest(), data.maxForest(), ""))
-                                    .withStyle(ChatFormatting.DARK_GREEN)
-                    ).getVisualOrderText(),
+                                    .withStyle(ChatFormatting.DARK_GREEN))
+                            .getVisualOrderText(),
                     PADDING, y, 0x000000, false);
             y += LINE_H;
         }
@@ -238,8 +241,8 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
             widgets.addText(
                     Component.translatable("tfm.emi.spawn.label.height").append(
                             Component.literal(buildRangeStr(data.minHeight(), data.maxHeight(), "Y"))
-                                    .withStyle(ChatFormatting.GRAY)
-                    ).getVisualOrderText(),
+                                    .withStyle(ChatFormatting.GRAY))
+                            .getVisualOrderText(),
                     PADDING, y, 0x000000, false);
             y += LINE_H;
         }
@@ -251,8 +254,7 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
                     : data.biomeTag();
             widgets.addText(
                     Component.translatable("tfm.emi.spawn.label.biome").append(
-                            Component.translatable(labelKey).withStyle(ChatFormatting.DARK_GREEN)
-                    ).getVisualOrderText(),
+                            Component.translatable(labelKey).withStyle(ChatFormatting.DARK_GREEN)).getVisualOrderText(),
                     PADDING, y, 0x000000, false);
             List<Component> tooltip = getBiomeTooltip(data.biomeTag());
             if (!tooltip.isEmpty()) {
@@ -275,22 +277,31 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
 
     private int countInfoLines() {
         int count = 2; // saisons + spawnType toujours présents
-        if (data.dayTime() != MobSpawnData.DayTime.ALL) count++;
-        if (data.minTemperature() != null || data.maxTemperature() != null) count++;
-        if (data.minGroundwater() != null || data.maxGroundwater() != null) count++;
-        if (data.minForest() != null || data.maxForest() != null) count++;
-        if (data.minHeight() != null || data.maxHeight() != null) count++;
-        if (data.biomeTag() != null) count++;
-        if (data.caveVariant()) count++;
+        if (data.dayTime() != MobSpawnData.DayTime.ALL)
+            count++;
+        if (data.minTemperature() != null || data.maxTemperature() != null)
+            count++;
+        if (data.minGroundwater() != null || data.maxGroundwater() != null)
+            count++;
+        if (data.minForest() != null || data.maxForest() != null)
+            count++;
+        if (data.minHeight() != null || data.maxHeight() != null)
+            count++;
+        if (data.biomeTag() != null)
+            count++;
+        if (data.caveVariant())
+            count++;
         return count;
     }
 
     private List<Component> getBiomeTooltip(String tagStr) {
         var level = Minecraft.getInstance().level;
-        if (level == null) return List.of();
+        if (level == null)
+            return List.of();
         try {
             var biomeRegistry = level.registryAccess().registry(Registries.BIOME).orElse(null);
-            if (biomeRegistry == null) return List.of();
+            if (biomeRegistry == null)
+                return List.of();
 
             return biomeRegistry.getTag(TagKey.create(Registries.BIOME, ResourceLocation.parse(tagStr)))
                     .stream()
@@ -308,17 +319,24 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
     }
 
     private String buildRangeStr(@Nullable Integer min, @Nullable Integer max, String unit) {
-        if (min != null && max != null) return min + unit + " – " + max + unit;
-        if (min != null) return "≥ " + min + unit;
-        if (max != null) return "≤ " + max + unit;
+        if (min != null && max != null)
+            return min + unit + " – " + max + unit;
+        if (min != null)
+            return "≥ " + min + unit;
+        if (max != null)
+            return "≤ " + max + unit;
         return "—";
     }
 
     private int getSeasonsColor(List<String> seasons) {
-        if (seasons.contains("all") || seasons.size() == 4) return 0xAAAAAA;
-        if (seasons.contains("summer")) return 0xFFCC00;
-        if (seasons.contains("spring")) return 0x66CC44;
-        if (seasons.contains("fall")) return 0xFF7722;
+        if (seasons.contains("all") || seasons.size() == 4)
+            return 0xAAAAAA;
+        if (seasons.contains("summer"))
+            return 0xFFCC00;
+        if (seasons.contains("spring"))
+            return 0x66CC44;
+        if (seasons.contains("fall"))
+            return 0xFF7722;
         return 0xAADDFF; // winter
     }
 
@@ -326,7 +344,8 @@ public class MobSpawnInfoRecipe implements EmiRecipe {
     private static LivingEntity getOrCreateEntity(EntityType<?> type, ResourceLocation id) {
         return ENTITY_CACHE.computeIfAbsent(id, k -> {
             var level = Minecraft.getInstance().level;
-            if (level == null) return null;
+            if (level == null)
+                return null;
             var entity = type.create(level);
             return entity instanceof LivingEntity living ? living : null;
         });

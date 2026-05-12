@@ -1,9 +1,14 @@
 package com.terrafirmamagica.utils;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
+
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
+
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -14,10 +19,6 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
 
 public class ModelUtils {
 
@@ -73,7 +74,7 @@ public class ModelUtils {
     }
 
     public static void forEachCardinalDirection(VariantBlockStateBuilder builder, ModelFile model,
-                                                Function<VariantBlockStateBuilder.PartialBlockstate, VariantBlockStateBuilder.PartialBlockstate> func) {
+            Function<VariantBlockStateBuilder.PartialBlockstate, VariantBlockStateBuilder.PartialBlockstate> func) {
         var north = builder.partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH);
         func.apply(north).modelForState().modelFile(model).addModel();
         var south = builder.partialState().with(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH);

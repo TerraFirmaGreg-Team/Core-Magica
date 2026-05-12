@@ -1,5 +1,14 @@
 package com.terrafirmamagica.mixins.common.hexalia;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import net.astralya.hexalia.block.entity.custom.RitualTableBlockEntity;
 import net.dries007.tfc.common.blockentities.CropBlockEntity;
 import net.dries007.tfc.common.blocks.crop.CropBlock;
@@ -10,14 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 @Mixin(value = RitualTableBlockEntity.class, remap = false)
 public abstract class RitualTableBlockEntityMixin {
@@ -40,16 +41,20 @@ public abstract class RitualTableBlockEntityMixin {
     @Inject(method = "setItem", at = @At("TAIL"), remap = false)
     private void tfm$onSetItem(int slot, ItemStack stack, CallbackInfo ci) {
         try {
-            if (slot != 0 || stack.isEmpty()) return;
-            if ((int) FIELD_TRANSFORM_TICKS_REMAINING.get(this) != 0) return;
+            if (slot != 0 || stack.isEmpty())
+                return;
+            if ((int) FIELD_TRANSFORM_TICKS_REMAINING.get(this) != 0)
+                return;
 
             @SuppressWarnings("unchecked")
             List<BlockPos> grownCrops = (List<BlockPos>) FIELD_GROWN_CROPS.get(this);
-            if (grownCrops == null || grownCrops.isEmpty()) return;
+            if (grownCrops == null || grownCrops.isEmpty())
+                return;
 
-            RitualTableBlockEntity be = (RitualTableBlockEntity)(Object) this;
+            RitualTableBlockEntity be = (RitualTableBlockEntity) (Object) this;
             Level level = be.getLevel();
-            if (level == null || level.isClientSide()) return;
+            if (level == null || level.isClientSide())
+                return;
 
             for (BlockPos cropPos : grownCrops) {
                 BlockState state = level.getBlockState(cropPos);
@@ -72,7 +77,8 @@ public abstract class RitualTableBlockEntityMixin {
             return;
         }
 
-        if (!(level.getBlockEntity(pos) instanceof CropBlockEntity cropBE)) return;
+        if (!(level.getBlockEntity(pos) instanceof CropBlockEntity cropBE))
+            return;
 
         // Remove top block first to prevent it from dropping when the bottom is reset
         if (state.getBlock() instanceof DoubleCropBlock) {

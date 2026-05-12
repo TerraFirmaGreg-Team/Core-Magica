@@ -1,8 +1,11 @@
 package com.terrafirmamagica.common.ceremony;
 
-import com.terrafirmamagica.TFMCore;
+import static net.dries007.tfc.common.blocks.TFCBlocks.PLANTS;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import net.dries007.tfc.common.blocks.TFCBlockStateProperties;
-import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.plant.ITallPlant;
 import net.dries007.tfc.common.blocks.plant.Plant;
 import net.minecraft.core.BlockPos;
@@ -16,13 +19,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+
 import pokefenn.totemic.api.ceremony.CeremonyEffectContext;
 import pokefenn.totemic.api.ceremony.CeremonyInstance;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static net.dries007.tfc.common.blocks.TFCBlocks.PLANTS;
 
 public enum EvergreenSunflowersCeremonyInstance implements CeremonyInstance {
     INSTANCE;
@@ -30,20 +29,22 @@ public enum EvergreenSunflowersCeremonyInstance implements CeremonyInstance {
     private static final int RANGE = 8;
     private static final TagKey<Block> GENERAL_PLANTS = TagKey.create(
             BuiltInRegistries.BLOCK.key(),
-            ResourceLocation.fromNamespaceAndPath("tfm", "general_plants")
-    );
+            ResourceLocation.fromNamespaceAndPath("tfm", "general_plants"));
 
     @Override
     public void effect(Level level, BlockPos pos, CeremonyEffectContext context) {
-        if (level.isClientSide()) return;
+        if (level.isClientSide())
+            return;
 
         List<BlockPos> plants = findTaggedBlocks(level, pos, RANGE);
-        if (plants.isEmpty()) return;
+        if (plants.isEmpty())
+            return;
 
         RandomSource random = level.getRandom();
 
         for (BlockPos plantPos : plants) {
-            if (random.nextFloat() > 0.005f) continue;
+            if (random.nextFloat() > 0.005f)
+                continue;
 
             BlockState state = level.getBlockState(plantPos);
 
@@ -84,7 +85,8 @@ public enum EvergreenSunflowersCeremonyInstance implements CeremonyInstance {
                 for (int dz = -radius; dz <= radius; dz++) {
                     BlockPos p = center.offset(dx, dy, dz);
                     BlockState state = level.getBlockState(p);
-                    if (!state.is(GENERAL_PLANTS)) continue;
+                    if (!state.is(GENERAL_PLANTS))
+                        continue;
 
                     if (state.hasProperty(TFCBlockStateProperties.TALL_PLANT_PART)
                             && state.getValue(TFCBlockStateProperties.TALL_PLANT_PART) == ITallPlant.Part.UPPER) {

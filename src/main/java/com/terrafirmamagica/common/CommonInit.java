@@ -1,15 +1,16 @@
 package com.terrafirmamagica.common;
 
+import static com.terrafirmamagica.TFMCore.REGISTRATE;
+
 import com.terrafirmamagica.common.data.*;
 import com.terrafirmamagica.common.rite.PreserveFoodRiteFactory;
 import com.terrafirmamagica.world.feature.TFMFeatures;
+
 import net.favouriteless.enchanted.api.circle_magic.RiteFactoryRegistry;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
-
-import static com.terrafirmamagica.TFMCore.REGISTRATE;
 
 public class CommonInit {
     private static IEventBus modBus;
@@ -42,7 +43,6 @@ public class CommonInit {
     public static void onCommonSetup(final FMLCommonSetupEvent event) {
         RiteFactoryRegistry.get().register(
                 PreserveFoodRiteFactory.ID,
-                PreserveFoodRiteFactory.CODEC
-        );
+                PreserveFoodRiteFactory.CODEC);
     }
 }

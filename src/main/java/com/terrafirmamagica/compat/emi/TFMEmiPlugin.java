@@ -1,21 +1,21 @@
 package com.terrafirmamagica.compat.emi;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Items;
+
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Items;
 
 @EmiEntrypoint
 public class TFMEmiPlugin implements EmiPlugin {
 
     public static final EmiRecipeCategory MOB_SPAWN_INFO = new EmiRecipeCategory(
             ResourceLocation.fromNamespaceAndPath("tfm", "mob_spawn_info"),
-            EmiStack.of(Items.ZOMBIE_SPAWN_EGG)
-    );
+            EmiStack.of(Items.ZOMBIE_SPAWN_EGG));
 
     @Override
     public void register(EmiRegistry registry) {

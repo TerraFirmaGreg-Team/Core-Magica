@@ -1,5 +1,13 @@
 package com.terrafirmamagica.mixins.common.hexalia;
 
+import java.lang.reflect.Field;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import net.astralya.hexalia.gameplay.cacofey.ai.CacofeyHarvestGoal;
 import net.dries007.tfc.common.blockentities.CropBlockEntity;
 import net.dries007.tfc.common.blocks.crop.CropBlock;
@@ -9,13 +17,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.lang.reflect.Field;
 
 @Mixin(value = CacofeyHarvestGoal.class, remap = false)
 public abstract class CacofeyHarvestGoalMixin {
@@ -40,11 +41,11 @@ public abstract class CacofeyHarvestGoalMixin {
     @Inject(method = "tickHarvest", at = @At("TAIL"), remap = false)
     private void tfm$resetTFCCrop(CallbackInfo ci) {
         try {
-            net.minecraft.world.entity.TamableAnimal cacofey =
-                    (net.minecraft.world.entity.TamableAnimal) TFM$FIELD_CACOFEY.get(this);
+            net.minecraft.world.entity.TamableAnimal cacofey = (net.minecraft.world.entity.TamableAnimal) TFM$FIELD_CACOFEY.get(this);
             BlockPos cropPos = (BlockPos) TFM$FIELD_CROP_POS.get(this);
 
-            if (!(cacofey.level() instanceof ServerLevel level)) return;
+            if (!(cacofey.level() instanceof ServerLevel level))
+                return;
 
             BlockState state = level.getBlockState(cropPos);
 
@@ -53,7 +54,8 @@ public abstract class CacofeyHarvestGoalMixin {
                 return;
             }
 
-            if (!(level.getBlockEntity(cropPos) instanceof CropBlockEntity cropBE)) return;
+            if (!(level.getBlockEntity(cropPos) instanceof CropBlockEntity cropBE))
+                return;
 
             if (state.getBlock() instanceof DoubleCropBlock) {
                 BlockPos above = cropPos.above();

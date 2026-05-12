@@ -16,10 +16,10 @@ import net.minecraft.world.level.block.Block;
 @SuppressWarnings("unused")
 public class TFMCreativeTab {
     public static RegistryEntry<CreativeModeTab, CreativeModeTab> TFM = REGISTRATE.defaultCreativeTab("tfm",
-                    builder -> builder
-                            .displayItems(new RegistrateDisplayItemsGenerator("tfm", REGISTRATE))
-                            .title(Component.translatable("tfm.creative_tab.tfg"))
-                            .build())
+            builder -> builder
+                    .displayItems(new RegistrateDisplayItemsGenerator("tfm", REGISTRATE))
+                    .title(Component.translatable("tfm.creative_tab.tfg"))
+                    .build())
             .register();
 
     public static void init() {

@@ -1,5 +1,10 @@
 package com.terrafirmamagica.mixins.common.hexalia;
 
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import net.astralya.hexalia.block.entity.custom.AstrylisBlockEntity;
 import net.dries007.tfc.common.blockentities.CropBlockEntity;
 import net.dries007.tfc.common.blocks.crop.CropBlock;
@@ -10,21 +15,11 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-
 
 @Mixin(value = AstrylisBlockEntity.class, remap = false)
 public class AstrylisBlockEntityMixin {
 
-    @Inject(
-            method = "applyBonemealToCropsAndSaplings",
-            at = @At("HEAD"),
-            cancellable = true
-    )
+    @Inject(method = "applyBonemealToCropsAndSaplings", at = @At("HEAD"), cancellable = true)
     private static void tfm$supportTFCCrops(ServerLevel level, BlockPos centerPos, CallbackInfo ci) {
         BlockPos.betweenClosedStream(centerPos.offset(-4, -2, -4), centerPos.offset(4, 2, 4)).forEach(pos -> {
             BlockState state = level.getBlockState(pos);
@@ -50,7 +45,8 @@ public class AstrylisBlockEntityMixin {
         BlockPos.betweenClosedStream(centerPos.offset(-4, -2, -4), centerPos.offset(4, 2, 4)).forEach(pos -> {
             BlockState state = level.getBlockState(pos);
 
-            if (level.getBlockEntity(pos) instanceof CropBlockEntity) return;
+            if (level.getBlockEntity(pos) instanceof CropBlockEntity)
+                return;
 
             if (state.getBlock() instanceof BonemealableBlock bonemealableBlock &&
                     (state.is(BlockTags.CROPS) || state.is(BlockTags.SAPLINGS))) {

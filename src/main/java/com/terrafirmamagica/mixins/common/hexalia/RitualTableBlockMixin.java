@@ -1,5 +1,15 @@
 package com.terrafirmamagica.mixins.common.hexalia;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
 import net.astralya.hexalia.block.custom.RitualTableBlock;
 import net.astralya.hexalia.block.entity.custom.RitualBrazierBlockEntity;
@@ -16,15 +26,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 @Mixin(value = RitualTableBlock.class, remap = false)
 public class RitualTableBlockMixin {
@@ -47,7 +48,7 @@ public class RitualTableBlockMixin {
 
     @Inject(method = "findFullyGrownCrops", at = @At("HEAD"), cancellable = true)
     private void tfm$findFullyGrownCrops(Level level, BlockPos center, int required, int radius,
-                                         CallbackInfoReturnable<List<BlockPos>> cir) {
+            CallbackInfoReturnable<List<BlockPos>> cir) {
         List<BlockPos> found = new ArrayList<>();
 
         for (int dx = -radius; dx <= radius; dx++) {
@@ -75,8 +76,8 @@ public class RitualTableBlockMixin {
 
     @Inject(method = "tryStartRitual", at = @At("HEAD"), cancellable = true)
     private void tfm$tryStartRitual(Level level, BlockPos pos, Player player,
-                                    RitualTableBlockEntity tableBE,
-                                    CallbackInfoReturnable<Boolean> cir) {
+            RitualTableBlockEntity tableBE,
+            CallbackInfoReturnable<Boolean> cir) {
         try {
             ItemStack tableItem = tableBE.getItem(0);
             if (tableItem.isEmpty()) {
@@ -159,14 +160,16 @@ public class RitualTableBlockMixin {
                     }
                 }
 
-                if (found.size() >= required) return found;
+                if (found.size() >= required)
+                    return found;
             }
         }
         return found;
     }
 
     private void tfm$fail(Level level, BlockPos pos, Player player, String key) {
-        if (!level.isClientSide) player.displayClientMessage(Component.translatable(key), true);
+        if (!level.isClientSide)
+            player.displayClientMessage(Component.translatable(key), true);
         level.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 0.4f, 0.6f);
     }
 }

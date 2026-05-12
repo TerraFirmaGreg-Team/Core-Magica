@@ -1,6 +1,9 @@
 package com.terrafirmamagica.common.rite;
 
+import java.util.List;
+
 import com.terrafirmamagica.common.data.TFMFoodTraits;
+
 import net.dries007.tfc.common.component.food.FoodCapability;
 import net.favouriteless.enchanted.common.enchanted.circle_magic.rites.Rite;
 import net.minecraft.core.particles.ParticleTypes;
@@ -9,8 +12,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
-
-import java.util.List;
 
 public class PreserveFoodRite extends Rite {
 
@@ -69,13 +70,13 @@ public class PreserveFoodRite extends Rite {
     private void applyPreservation() {
         List<ItemEntity> items = level.getEntitiesOfClass(
                 ItemEntity.class,
-                new AABB(pos).inflate(radius)
-        );
+                new AABB(pos).inflate(radius));
 
         int remaining = maxItems;
 
         for (ItemEntity entity : items) {
-            if (maxItems > 0 && remaining <= 0) break;
+            if (maxItems > 0 && remaining <= 0)
+                break;
 
             var stack = entity.getItem();
             if (FoodCapability.has(stack) && !FoodCapability.isRotten(stack)) {

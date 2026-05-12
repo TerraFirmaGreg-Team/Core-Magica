@@ -1,7 +1,9 @@
 package com.terrafirmamagica.common.event;
 
 import com.terrafirmamagica.TFMCore;
+
 import net.dries007.tfc.common.blockentities.CropBlockEntity;
+import net.dries007.tfc.common.blocks.crop.CropBlock;
 import net.dries007.tfc.common.entities.livestock.Age;
 import net.dries007.tfc.common.entities.livestock.Mammal;
 import net.dries007.tfc.common.entities.livestock.TFCAnimal;
@@ -19,13 +21,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+
 import pokefenn.totemic.api.TotemicAPI;
 import pokefenn.totemic.api.TotemicBlockTags;
 import pokefenn.totemic.api.TotemicEntityUtil;
 import pokefenn.totemic.api.event.CeremonyEvent;
-import net.dries007.tfc.common.blocks.crop.ICropBlock;
-import net.dries007.tfc.common.blocks.crop.CropBlock;
-import pokefenn.totemic.init.ModBlocks;
 import pokefenn.totemic.util.MiscUtil;
 
 @EventBusSubscriber(modid = TFMCore.MOD_ID)
@@ -35,9 +35,12 @@ public class TFMCeremonyEvents {
 
     @SubscribeEvent
     public static void onFertilityCeremonyEffect(CeremonyEvent.EffectTick event) {
-        if (!event.getCeremony().getRegistryName().equals(FERTILITY)) return;
-        if (!(event.getLevel() instanceof ServerLevel level)) return;
-        if (event.getContext().getTime() % 20 != 0) return;
+        if (!event.getCeremony().getRegistryName().equals(FERTILITY))
+            return;
+        if (!(event.getLevel() instanceof ServerLevel level))
+            return;
+        if (event.getContext().getTime() % 20 != 0)
+            return;
 
         event.setCanceled(true);
 
@@ -45,35 +48,34 @@ public class TFMCeremonyEvents {
 
         var aabb = TotemicEntityUtil.getAABBAround(event.getPos(), 8);
 
-        level.getEntitiesOfClass(Mammal.class, aabb, animal ->
-                !animal.isMale() &&
-                        animal.getAgeType() == Age.ADULT &&
-                        !animal.isFertilized() &&
-                        animal.isReadyToMate()
-        ).stream().limit(2).forEach(female -> {
-            // If there is a male use it
-            var optionalMale = level.getEntitiesOfClass(Mammal.class, aabb, male ->
-                    male.isMale() &&
+        level.getEntitiesOfClass(Mammal.class, aabb, animal -> !animal.isMale() &&
+                animal.getAgeType() == Age.ADULT &&
+                !animal.isFertilized() &&
+                animal.isReadyToMate()).stream().limit(2).forEach(female -> {
+                    // If there is a male use it
+                    var optionalMale = level.getEntitiesOfClass(Mammal.class, aabb, male -> male.isMale() &&
                             male.getType() == female.getType() &&
-                            male.getAgeType() == Age.ADULT
-            ).stream().findFirst();
+                            male.getAgeType() == Age.ADULT).stream().findFirst();
 
-            if (optionalMale.isPresent()) {
-                female.onFertilized(optionalMale.get()); // Add male genetics
-            } else {
-                female.setFertilized(true); // Without male random genes
-            }
-            female.setPregnantTime(Calendars.SERVER.getTotalCalendarDays());
-        });
+                    if (optionalMale.isPresent()) {
+                        female.onFertilized(optionalMale.get()); // Add male genetics
+                    } else {
+                        female.setFertilized(true); // Without male random genes
+                    }
+                    female.setPregnantTime(Calendars.SERVER.getTotalCalendarDays());
+                });
     }
 
     private static final ResourceLocation ANIMAL_GROWTH = ResourceLocation.parse("totemic:animal_growth");
 
     @SubscribeEvent
     public static void onAnimalGrowthCeremonyEffect(CeremonyEvent.EffectTick event) {
-        if (!event.getCeremony().getRegistryName().equals(ANIMAL_GROWTH)) return;
-        if (!(event.getLevel() instanceof ServerLevel level)) return;
-        if (event.getContext().getTime() % 20 != 0) return;
+        if (!event.getCeremony().getRegistryName().equals(ANIMAL_GROWTH))
+            return;
+        if (!(event.getLevel() instanceof ServerLevel level))
+            return;
+        if (event.getContext().getTime() % 20 != 0)
+            return;
 
         event.setCanceled(true);
 
@@ -81,33 +83,34 @@ public class TFMCeremonyEvents {
 
         // Faster Growth for kids
         level.getEntitiesOfClass(TFCAnimal.class, aabb,
-                animal -> animal.getAgeType() == Age.CHILD
-        ).forEach(animal -> {
-            if (level.random.nextInt(10) == 0) { // 1 = 100% / 2 = 50% / 10 = 10%
-                long acceleration = (long) (ICalendar.PLAYER_TICKS_IN_DEFAULT_DAY * animal.animalConfig().adulthoodDays().get() * 0.1); // 1.0 = Adult / 0.5 = 50% / 0.1 = 10%
-                animal.setBirthTick(animal.getBirthTick() - acceleration);
-            }
-        });
+                animal -> animal.getAgeType() == Age.CHILD).forEach(animal -> {
+                    if (level.random.nextInt(10) == 0) { // 1 = 100% / 2 = 50% / 10 = 10%
+                        long acceleration = (long) (ICalendar.PLAYER_TICKS_IN_DEFAULT_DAY * animal.animalConfig().adulthoodDays().get() * 0.1); // 1.0 = Adult / 0.5 = 50% / 0.1 = 10%
+                        animal.setBirthTick(animal.getBirthTick() - acceleration);
+                    }
+                });
 
         // Faster Pregnancy
         level.getEntitiesOfClass(Mammal.class, aabb,
-                animal -> !animal.isMale() && animal.isFertilized()
-        ).forEach(pregnant -> {
-            if (level.random.nextInt(10) == 0) { // 1 = 100% / 2 = 50% / 10 = 10%
-                pregnant.setPregnantTime(
-                        pregnant.getPregnantTime() - pregnant.getGestationDays() / 10 //  1 = Instantly / 10 = 10% of reduction
-                );
-            }
-        });
+                animal -> !animal.isMale() && animal.isFertilized()).forEach(pregnant -> {
+                    if (level.random.nextInt(10) == 0) { // 1 = 100% / 2 = 50% / 10 = 10%
+                        pregnant.setPregnantTime(
+                                pregnant.getPregnantTime() - pregnant.getGestationDays() / 10 //  1 = Instantly / 10 = 10% of reduction
+                        );
+                    }
+                });
     }
 
     private static final ResourceLocation PLANT_GROWTH = ResourceLocation.parse("totemic:zaphkiel_waltz");
 
     @SubscribeEvent
     public static void onZaphkielWaltzEffect(CeremonyEvent.EffectTick event) {
-        if (!event.getCeremony().getRegistryName().equals(PLANT_GROWTH)) return;
-        if (!(event.getLevel() instanceof ServerLevel level)) return;
-        if (event.getContext().getTime() % 7 != 0) return;
+        if (!event.getCeremony().getRegistryName().equals(PLANT_GROWTH))
+            return;
+        if (!(event.getLevel() instanceof ServerLevel level))
+            return;
+        if (event.getContext().getTime() % 7 != 0)
+            return;
 
         event.setCanceled(true);
 
@@ -133,13 +136,14 @@ public class TFMCeremonyEvents {
                             state.randomTick(level, pos, level.random);
                         }
                     }
-                }
-        );
+                });
 
     }
+
     private static final ResourceLocation AFC_CEDAR_SAPLING = ResourceLocation.parse("afc:wood/sapling/redcedar");
 
-    private static void transformSaplings(Level level, BlockPos pos) {Block afcCedar = BuiltInRegistries.BLOCK.get(AFC_CEDAR_SAPLING);
+    private static void transformSaplings(Level level, BlockPos pos) {
+        Block afcCedar = BuiltInRegistries.BLOCK.get(AFC_CEDAR_SAPLING);
 
         BlockPos.betweenClosedStream(TotemicEntityUtil.getBoundingBoxAround(pos, 6))
                 .filter(p -> {

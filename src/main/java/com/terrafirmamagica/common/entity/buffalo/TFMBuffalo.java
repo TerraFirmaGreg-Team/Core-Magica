@@ -1,5 +1,7 @@
 package com.terrafirmamagica.common.entity.buffalo;
 
+import org.jetbrains.annotations.NotNull;
+
 import net.dries007.tfc.client.TFCSounds;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.entities.livestock.DairyAnimal;
@@ -16,7 +18,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import org.jetbrains.annotations.NotNull;
 
 public class TFMBuffalo extends DairyAnimal {
     public TFMBuffalo(EntityType<? extends DairyAnimal> type, Level level, TFCSounds.EntityId sounds, ProducingMammalConfig config) {
@@ -28,7 +29,7 @@ public class TFMBuffalo extends DairyAnimal {
     }
 
     public static AttributeSupplier.Builder createMobAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, (double)25.0F).add(Attributes.MOVEMENT_SPEED, 0.15).add(Attributes.ATTACK_DAMAGE, (double)2.0F);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, (double) 25.0F).add(Attributes.MOVEMENT_SPEED, 0.15).add(Attributes.ATTACK_DAMAGE, (double) 2.0F);
     }
 
     public static boolean spawnRules(EntityType<? extends TFMBuffalo> type, LevelAccessor level, MobSpawnType spawn, BlockPos pos, RandomSource rand) {

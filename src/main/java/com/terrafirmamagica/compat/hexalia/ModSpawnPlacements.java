@@ -1,6 +1,7 @@
 package com.terrafirmamagica.compat.hexalia;
 
 import com.terrafirmamagica.TFMCore;
+
 import net.astralya.hexalia.entity.ModEntities;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -16,16 +17,14 @@ public class ModSpawnPlacements {
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules,
-                RegisterSpawnPlacementsEvent.Operation.REPLACE
-        );
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
         TFMCore.LOGGER.info("Registered silk_moth spawn placement: {}", ModEntities.SILK_MOTH_ENTITY.get());
         event.register(
                 ModEntities.CACOFEY_ENTITY.get(),
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules,
-                RegisterSpawnPlacementsEvent.Operation.REPLACE
-        );
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
         TFMCore.LOGGER.info("Registered cacofey spawn placement: {}", ModEntities.CACOFEY_ENTITY.get());
     }
 }

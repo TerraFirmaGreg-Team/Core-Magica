@@ -1,6 +1,12 @@
 package com.terrafirmamagica.mixins.common.hexalia;
 
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
 import net.astralya.hexalia.block.custom.SmallCauldronBlock;
+import net.dries007.tfc.common.items.TFCItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -10,30 +16,21 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.dries007.tfc.common.items.TFCItems;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = SmallCauldronBlock.class, remap = false)
 public class SmallCauldronBlockMixin {
 
-    @Inject(
-            method = "tryIgniteWithFlintAndSteel",
-            at = @At("HEAD"),
-            cancellable = true,
-            remap = false
-    )
+    @Inject(method = "tryIgniteWithFlintAndSteel", at = @At("HEAD"), cancellable = true, remap = false)
     private void tfm$allowTFCIgnition(ItemStack stack, BlockState state, Level level,
-                                      net.minecraft.core.BlockPos pos, Player player,
-                                      InteractionHand hand,
-                                      CallbackInfoReturnable<ItemInteractionResult> cir) {
+            net.minecraft.core.BlockPos pos, Player player,
+            InteractionHand hand,
+            CallbackInfoReturnable<ItemInteractionResult> cir) {
 
         boolean isTFCIgniter = stack.is(TFCItems.FLINT_AND_PYRITE.get())
                 || stack.is(TFCItems.FIRESTARTER.get());
 
-        if (!isTFCIgniter) return;
+        if (!isTFCIgniter)
+            return;
 
         if (state.getValue(SmallCauldronBlock.WATERLOGGED) || state.getValue(SmallCauldronBlock.LIT)) {
             cir.setReturnValue(ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION);

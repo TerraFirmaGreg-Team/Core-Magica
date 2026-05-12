@@ -1,5 +1,15 @@
 package com.terrafirmamagica;
 
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import com.terrafirmamagica.mixins.common.registrate.AbstractRegistrateAccessor;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.Builder;
@@ -9,7 +19,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -26,16 +36,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.RegisterEvent;
-import org.jetbrains.annotations.ApiStatus;
-
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
@@ -90,7 +90,7 @@ public class TFMRegistrate extends AbstractRegistrate<TFMRegistrate> {
     }
 
     protected <P> NoConfigBuilder<CreativeModeTab, CreativeModeTab, P> createCreativeModeTab(P parent, String name,
-                                                                                             Consumer<CreativeModeTab.Builder> config) {
+            Consumer<CreativeModeTab.Builder> config) {
         return this.generic(parent, name, Registries.CREATIVE_MODE_TAB, () -> {
             var builder = CreativeModeTab.builder()
                     .icon(() -> getAll(Registries.ITEM).stream().findFirst().map(ItemEntry::cast)
@@ -120,19 +120,19 @@ public class TFMRegistrate extends AbstractRegistrate<TFMRegistrate> {
     }
 
     public boolean isInCreativeTab(RegistryEntry<?, ?> entry,
-                                   RegistryEntry<CreativeModeTab, ? extends CreativeModeTab> tab) {
+            RegistryEntry<CreativeModeTab, ? extends CreativeModeTab> tab) {
         return TAB_LOOKUP.get(entry) == tab;
     }
 
     public void setCreativeTab(RegistryEntry<?, ?> entry,
-                               @Nullable RegistryEntry<CreativeModeTab, ? extends CreativeModeTab> tab) {
+            @Nullable RegistryEntry<CreativeModeTab, ? extends CreativeModeTab> tab) {
         TAB_LOOKUP.put(entry, tab);
     }
 
     protected <R, T extends R> RegistryEntry<R, T> accept(String name, ResourceKey<? extends Registry<R>> type,
-                                                          Builder<R, T, ?, ?> builder,
-                                                          NonNullSupplier<? extends T> creator,
-                                                          NonNullFunction<DeferredHolder<R, T>, ? extends RegistryEntry<R, T>> entryFactory) {
+            Builder<R, T, ?, ?> builder,
+            NonNullSupplier<? extends T> creator,
+            NonNullFunction<DeferredHolder<R, T>, ? extends RegistryEntry<R, T>> entryFactory) {
         RegistryEntry<R, T> entry = super.accept(name, type, builder, creator, entryFactory);
 
         if (this.currentTab != null) {

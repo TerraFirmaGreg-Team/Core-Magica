@@ -1,13 +1,14 @@
 package com.terrafirmamagica.compat.emi;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.SpawnEggItem;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public record MobSpawnData(
         ResourceLocation entityId,
@@ -27,8 +28,7 @@ public record MobSpawnData(
         @Nullable String biomeTagLabel,
         DayTime dayTime,
         boolean seeSky,
-        boolean caveVariant
-) {
+        boolean caveVariant) {
     public enum SpawnType {
         SURFACE, CAVE, BOTH, WATER, SHORE
     }
@@ -328,8 +328,7 @@ public record MobSpawnData(
             new MobSpawnData(ResourceLocation.fromNamespaceAndPath("variantsandventures", "gelid"),
                     getType("variantsandventures:gelid"), "V&V", SpawnType.SURFACE,
                     List.of("fall", "winter"), null, -5, null, null, null, null, 70, 220,
-                    "tfm:bic/cold_biomes", "cold_regions", DayTime.NIGHT, true, false)
-    );
+                    "tfm:bic/cold_biomes", "cold_regions", DayTime.NIGHT, true, false));
 
     // Get EntityType without crash if mod isn't loaded
     @SuppressWarnings("unchecked")

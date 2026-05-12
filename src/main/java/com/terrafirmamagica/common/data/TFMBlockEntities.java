@@ -1,16 +1,19 @@
 package com.terrafirmamagica.common.data;
 
-import com.terrafirmamagica.mixins.common.minecraft.BlockEntityTypeAccessor;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.minecraft.world.level.block.Block;
-
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+import com.terrafirmamagica.mixins.common.minecraft.BlockEntityTypeAccessor;
+
+import net.minecraft.world.level.block.Block;
+
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+
 public class TFMBlockEntities {
-    public static void init() {}
+    public static void init() {
+    }
 
     private static final Map<Supplier<?>, Set<Block>> beModification = new Object2ObjectOpenHashMap<>();
 

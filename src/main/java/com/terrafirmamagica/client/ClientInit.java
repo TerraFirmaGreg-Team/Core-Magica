@@ -1,7 +1,5 @@
 package com.terrafirmamagica.client;
 
-import com.terrafirmamagica.TFMCore;
-import net.minecraft.client.Minecraft;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;

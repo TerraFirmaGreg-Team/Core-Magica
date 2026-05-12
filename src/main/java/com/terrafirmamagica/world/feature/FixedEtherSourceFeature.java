@@ -1,5 +1,7 @@
 package com.terrafirmamagica.world.feature;
+
 import com.mojang.serialization.Codec;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -10,9 +12,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import it.mralxart.etheria.registry.BlockRegistry;
-import it.mralxart.etheria.blocks.EtherSource;
 import net.minecraft.world.phys.shapes.Shapes;
+
+import it.mralxart.etheria.blocks.EtherSource;
+import it.mralxart.etheria.registry.BlockRegistry;
 
 public class FixedEtherSourceFeature extends Feature<NoneFeatureConfiguration> {
     private static final BlockState ETHER_SOURCE = ((EtherSource) BlockRegistry.ETHER_SOURCE.get()).defaultBlockState();
@@ -66,7 +69,8 @@ public class FixedEtherSourceFeature extends Feature<NoneFeatureConfiguration> {
 
         for (int dy = 0; dy <= depth; ++dy) {
             int currentRadius = baseRadius - dy;
-            if (currentRadius <= 0) break;
+            if (currentRadius <= 0)
+                break;
             for (int dx = -currentRadius; dx <= currentRadius; ++dx) {
                 for (int dz = -currentRadius; dz <= currentRadius; ++dz) {
                     BlockPos targetPos = origin.offset(dx, -dy, dz);

@@ -1,6 +1,7 @@
 package com.terrafirmamagica.common.event;
 
 import com.terrafirmamagica.TFMCore;
+
 import net.joefoxe.hexerei.Hexerei;
 import net.joefoxe.hexerei.block.custom.SageBurningPlate;
 import net.joefoxe.hexerei.config.HexConfig;
@@ -21,15 +22,20 @@ public class SageBurningPlateEvent {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onPositionCheck(MobSpawnEvent.PositionCheck e) {
-        if (e.getResult() == MobSpawnEvent.PositionCheck.Result.FAIL) return;
+        if (e.getResult() == MobSpawnEvent.PositionCheck.Result.FAIL)
+            return;
 
-        Level world = e.getLevel().isClientSide() ? null :
-                e.getLevel() instanceof Level l ? l : null;
-        if (world == null) return;
-        if (e.getSpawnType() != MobSpawnType.NATURAL) return;
-        if (HexConfig.SAGE_BURNING_PLATE_RANGE.get() == 0) return;
-        if (!e.getEntity().getType().getCategory().equals(MobCategory.MONSTER)) return;
-        if (Hexerei.sageBurningPlateTileList.isEmpty()) return;
+        Level world = e.getLevel().isClientSide() ? null : e.getLevel() instanceof Level l ? l : null;
+        if (world == null)
+            return;
+        if (e.getSpawnType() != MobSpawnType.NATURAL)
+            return;
+        if (HexConfig.SAGE_BURNING_PLATE_RANGE.get() == 0)
+            return;
+        if (!e.getEntity().getType().getCategory().equals(MobCategory.MONSTER))
+            return;
+        if (Hexerei.sageBurningPlateTileList.isEmpty())
+            return;
 
         for (BlockPos pos : Hexerei.sageBurningPlateTileList) {
             float dist = (float) Math.sqrt(e.getEntity().distanceToSqr(pos.getCenter()));
