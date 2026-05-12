@@ -6,24 +6,15 @@ import org.jetbrains.annotations.ApiStatus;
 
 import com.terrafirmamagica.client.ClientInit;
 import com.terrafirmamagica.common.CommonInit;
-import com.terrafirmamagica.common.ceremony.AnvilUpgradeCeremonyInstance;
-import com.terrafirmamagica.common.ceremony.EvergreenSunflowersCeremonyInstance;
-import com.terrafirmamagica.common.data.TFMFoodTraits;
-import com.terrafirmamagica.common.food.TFMFoodIngredient;
 
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
-import pokefenn.totemic.api.TotemicAPI;
-import pokefenn.totemic.api.ceremony.Ceremony;
-import pokefenn.totemic.api.music.MusicInstrument;
-import pokefenn.totemic.api.registry.RegistryAPI;
 
 @Mod(TFMCore.MOD_ID)
 public class TFMCore {
@@ -34,22 +25,9 @@ public class TFMCore {
 
     public static final TFMRegistrate REGISTRATE = TFMRegistrate.create(TFMCore.MOD_ID);
 
-    // Ceremony Totemic
-    private static final DeferredRegister<Ceremony> CEREMONIES = DeferredRegister.create(RegistryAPI.CEREMONY_REGISTRY, MOD_ID);
-
-    public static final DeferredHolder<Ceremony, Ceremony> ANVIL_UPGRADE = CEREMONIES.register("anvil_upgrade", () -> new Ceremony(
-            2000,
-            20 * 20,
-            () -> AnvilUpgradeCeremonyInstance.INSTANCE,
-            () -> instrument("totemic:rattle"),
-            () -> instrument("totemic:eagle_bone_whistle")));
-
-    public static final DeferredHolder<Ceremony, Ceremony> EVERGREEN_SUNFLOWERS = CEREMONIES.register("evergreen", () -> new Ceremony(
-            2000,
-            20 * 20,
-            () -> EvergreenSunflowersCeremonyInstance.INSTANCE,
-            () -> instrument("totemic:rattle"),
-            () -> instrument("totemic:flute")));
+    static {
+        REGISTRATE.defaultCreativeTab((ResourceKey<CreativeModeTab>) null);
+    }
 
     public static ResourceLocation id(String name) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
@@ -60,20 +38,11 @@ public class TFMCore {
 
     public TFMCore(IEventBus modBus, ModContainer container) {
         TFMCore.tfmModBus = modBus;
-
-        CEREMONIES.register(modBus);
-
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+
         CommonInit.init(modBus);
         ClientInit.init(modBus);
-        TFMFoodIngredient.register(modBus);
-        TFMFoodTraits.register(modBus);
+
         modBus.addListener(com.terrafirmamagica.compat.hexalia.ModSpawnPlacements::register);
     }
-
-    private static MusicInstrument instrument(String id) {
-        return TotemicAPI.get().registry().instruments()
-                .get(ResourceLocation.parse(id));
-    }
-
 }

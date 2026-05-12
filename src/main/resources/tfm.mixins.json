@@ -1,13 +1,14 @@
 {
     "overwrites": {"requireAnnotations": true},
     "mixins": [
+        "common.minecraft.ModelProviderMixin",
+        "common.minecraft.BlockEntityTypeAccessor",
+        "common.registrate.AbstractRegistrateAccessor",
         "common.hexalia.AstrylisBlockEntityMixin",
         "common.hexalia.RitualBrazierBlockMixin",
         "common.hexalia.RitualTableBlockEntityMixin",
         "common.hexalia.RitualTableBlockMixin",
         "common.hexalia.SmallCauldronBlockMixin",
-        "common.minecraft.BlockEntityTypeAccessor",
-        "common.registrate.AbstractRegistrateAccessor",
         "common.hexalia.CacofeyHarvestGoalMixin"
     ],
     "package": "com.terrafirmamagica.mixins",

@@ -1,3 +1,5 @@
 {
-  "entity.tfm.buffalo": "Buffalo"
+  "block.tfm.wood.log_fence.hex_mahogany": "Wood/log Fence/hex Mahogany",
+  "entity.tfm.buffalo": "Buffalo",
+  "itemGroup.tfm.tfm_creative_tab": "TerraFirmaMagica-Core"
 }

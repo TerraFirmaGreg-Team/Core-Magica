@@ -2,7 +2,10 @@ package com.terrafirmamagica.common;
 
 import static com.terrafirmamagica.TFMCore.REGISTRATE;
 
+import com.terrafirmamagica.TFMCore;
 import com.terrafirmamagica.common.data.*;
+import com.terrafirmamagica.common.data.blocks.TFMBlocks;
+import com.terrafirmamagica.common.food.TFMFoodIngredient;
 import com.terrafirmamagica.common.rite.PreserveFoodRiteFactory;
 import com.terrafirmamagica.world.feature.TFMFeatures;
 
@@ -14,6 +17,10 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 
 public class CommonInit {
     private static IEventBus modBus;
+
+    static {
+        TFMCore.REGISTRATE.creativeModeTab(() -> TFMCreativeTab.TFM);
+    }
 
     public static void init(final IEventBus modBus) {
         CommonInit.modBus = modBus;
@@ -37,6 +44,9 @@ public class CommonInit {
         TFMEntities.init();
         TFMBlockEntities.init();
         TFMFeatures.register(modBus);
+        TFMFoodIngredient.register(modBus);
+        TFMFoodTraits.register(modBus);
+        TFMCeremonies.CEREMONIES.register(modBus);
     }
 
     @SubscribeEvent
