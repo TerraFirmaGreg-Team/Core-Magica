@@ -147,6 +147,14 @@ lombok {
     version = "1.18.38"
 }
 
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+processTestResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
@@ -164,11 +172,6 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
     expand replaceProperties
     from "src/main/templates"
     into "build/generated/sources/modMetadata"
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
-}
-
-processTestResources {
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 // Include the output of "generateModMetadata" as an input directory for the build
