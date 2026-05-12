@@ -16,7 +16,7 @@ public class ModSpawnPlacements {
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules,
-                RegisterSpawnPlacementsEvent.Operation.OR
+                RegisterSpawnPlacementsEvent.Operation.REPLACE
         );
         TFMCore.LOGGER.info("Registered silk_moth spawn placement: {}", ModEntities.SILK_MOTH_ENTITY.get());
         event.register(
@@ -24,7 +24,7 @@ public class ModSpawnPlacements {
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules,
-                RegisterSpawnPlacementsEvent.Operation.OR
+                RegisterSpawnPlacementsEvent.Operation.REPLACE
         );
         TFMCore.LOGGER.info("Registered cacofey spawn placement: {}", ModEntities.CACOFEY_ENTITY.get());
     }

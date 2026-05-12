@@ -1,0 +1,33 @@
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    dependsOn tasks.named('spotlessApply')
+}
+
+spotless {
+    java {
+        target project.fileTree(project.rootDir) {
+            include 'src/*/java/su/**/*.java'
+            exclude 'src/**/compat/emi/ExportedOreVeinInfo.java'
+        }
+
+        endWithNewline()
+        leadingTabsToSpaces()
+        removeUnusedImports()
+        toggleOffOn()
+        eclipse().configFile 'codeformat/codeformat.xml'
+        importOrderFile 'codeformat/tfm.importorder'
+        bumpThisNumberIfACustomStepChanges(1)
+    }
+
+    json {
+        target 'src/main/resources/**/*.json'
+        simple()
+        leadingTabsToSpaces(2)
+        endWithNewline()
+
+    }
+}
+
+tasks.named("build") {
+    dependsOn("spotlessApply")
+}

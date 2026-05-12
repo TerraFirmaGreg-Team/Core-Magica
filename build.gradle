@@ -4,7 +4,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.141'
     id 'idea'
     id("io.freefair.lombok") version "9.4.0"
-
+    id 'com.diffplug.spotless' version "${spotless_version}"
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -64,6 +64,8 @@ neoForge {
     runs {
         client {
             client()
+            ideName = "Client"
+            gameDirectory = project.file('run/client')
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
@@ -71,6 +73,8 @@ neoForge {
 
         server {
             server()
+            ideName = "Server"
+            gameDirectory = project.file('run/server')
             programArgument '--nogui'
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
@@ -85,12 +89,20 @@ neoForge {
 
         data {
             data()
+            ideName = "Data"
+            gameDirectory = project.file('run/data')
 
-            // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
-            // gameDirectory = project.file('run-data')
+            programArguments.addAll '--mod', project.mod_id, '--all'
+            programArguments.addAll '--output', file('src/generated/resources/').getAbsolutePath()
+            programArguments.addAll '--existing', file('src/main/resources/').getAbsolutePath()
 
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+            String[] existingMods = new String[] {
+                    "totemic"
+            }
+
+            for (String mod : existingMods) {
+                programArguments.addAll '--existing-mod', mod
+            }
         }
 
         // applies to all the run configs above
@@ -129,6 +141,7 @@ configurations {
 
 apply from: "gradle/scripts/repositories.gradle"
 apply from: "gradle/scripts/dependencies.gradle"
+apply from: "gradle/scripts/spotless.gradle"
 
 lombok {
     version = "1.18.38"
@@ -151,15 +164,27 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
     expand replaceProperties
     from "src/main/templates"
     into "build/generated/sources/modMetadata"
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
+
+processTestResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 // Include the output of "generateModMetadata" as an input directory for the build
 // this works with both building through Gradle and the IDE.
 sourceSets.main.resources.srcDir generateModMetadata
 // To avoid having to run "generateModMetadata" manually, make it run on every project reload
 neoForge.ideSyncTask generateModMetadata
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+// Create run-folders for non-client configs to avoid pollution of dev envs
+tasks.matching { it.name.startsWith('prepare') }.configureEach {
+    doFirst {
+        mkdir('run')
+        mkdir('run/server')
+        mkdir('run/gametest')
+        mkdir('run/data')
+    }
 }
 
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.

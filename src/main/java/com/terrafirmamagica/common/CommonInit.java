@@ -1,9 +1,6 @@
 package com.terrafirmamagica.common;
 
-import com.terrafirmamagica.common.data.TFMBlockEntities;
-import com.terrafirmamagica.common.data.TFMBlocks;
-import com.terrafirmamagica.common.data.TFMCreativeTab;
-import com.terrafirmamagica.common.data.TFMItems;
+import com.terrafirmamagica.common.data.*;
 import com.terrafirmamagica.common.rite.PreserveFoodRiteFactory;
 import com.terrafirmamagica.world.feature.TFMFeatures;
 import net.favouriteless.enchanted.api.circle_magic.RiteFactoryRegistry;
@@ -36,6 +33,7 @@ public class CommonInit {
 
         TFMBlocks.init();
         TFMItems.init();
+        TFMEntities.init();
         TFMBlockEntities.init();
         TFMFeatures.register(modBus);
     }
