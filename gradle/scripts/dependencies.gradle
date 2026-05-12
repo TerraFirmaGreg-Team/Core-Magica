@@ -24,6 +24,18 @@ dependencies {
     compileOnly versions.tfc.get()
     localRuntime versions.tfc.get()
 
+    // AFC
+    compileOnly versions.afc.get()
+    localRuntime versions.afc.get()
+
+    // Firmalife
+    // compileOnly versions.firmalife.get()
+    // localRuntime versions.firmalife.get()
+
+    // Kaleidoscope Cookery
+    // compileOnly versions.kaleidoscopecookery.get()
+    // localRuntime versions.kaleidoscopecookery.get()
+
     // Etheria
     compileOnly versions.etheria.get()
     localRuntime versions.etheria.get()
