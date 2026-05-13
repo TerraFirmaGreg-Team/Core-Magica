@@ -1,5 +1,7 @@
 package com.terrafirmamagica.common.data;
 
+import java.util.Objects;
+
 import com.terrafirmamagica.TFMCore;
 import com.terrafirmamagica.common.ceremony.AnvilUpgradeCeremonyInstance;
 import com.terrafirmamagica.common.ceremony.EvergreenSunflowersCeremonyInstance;
@@ -34,7 +36,7 @@ public class TFMCeremonies {
             () -> instrument("totemic:flute")));
 
     private static MusicInstrument instrument(String id) {
-        return TotemicAPI.get().registry().instruments()
-                .get(ResourceLocation.parse(id));
+        return Objects.requireNonNull(TotemicAPI.get().registry().instruments()
+                .get(ResourceLocation.parse(id)));
     }
 }
