@@ -56,6 +56,11 @@ dependencies {
     compileOnly versions.hexerei.get()
     localRuntime versions.hexerei.get()
 
+    // Eidolon Repraised
+
+    compileOnly versions.eidolon.get()
+    localRuntime versions.eidolon.get()
+
     // OTHER MOD DEPENDENCIES
     localRuntime versions.modopedia.get()
     localRuntime versions.geckolib.get()

@@ -5,6 +5,7 @@ import static com.terrafirmamagica.TFMCore.REGISTRATE;
 import com.terrafirmamagica.TFMCore;
 import com.terrafirmamagica.common.data.*;
 import com.terrafirmamagica.common.data.blocks.TFMBlocks;
+import com.terrafirmamagica.common.eidolon.TFMEidolonRegistry;
 import com.terrafirmamagica.common.food.TFMFoodIngredient;
 import com.terrafirmamagica.common.rite.PreserveFoodRiteFactory;
 import com.terrafirmamagica.world.feature.TFMFeatures;
@@ -54,5 +55,7 @@ public class CommonInit {
         RiteFactoryRegistry.get().register(
                 PreserveFoodRiteFactory.ID,
                 PreserveFoodRiteFactory.CODEC);
+
+        TFMEidolonRegistry.init();
     }
 }

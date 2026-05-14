@@ -13,6 +13,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -41,7 +42,10 @@ public class TFMCore {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 
         CommonInit.init(modBus);
-        ClientInit.init(modBus);
+
+        if (FMLEnvironment.dist.isClient()) {
+            ClientInit.init(modBus);
+        }
 
         modBus.addListener(com.terrafirmamagica.compat.hexalia.ModSpawnPlacements::register);
     }
