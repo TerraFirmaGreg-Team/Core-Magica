@@ -1,5 +1,6 @@
 package com.terrafirmamagica.common.event;
 
+import com.sammy.malum.registry.common.MalumAttributes;
 import com.terrafirmamagica.TFMCore;
 
 import net.astralya.hexalia.item.ModItems;
@@ -23,7 +24,13 @@ public class TFMHexaliaEvents {
                         .add(Attributes.ARMOR,
                                 new AttributeModifier(
                                         ResourceLocation.parse("tfm:ghostveil_armor"),
-                                        4.0,
+                                        2.0,
+                                        AttributeModifier.Operation.ADD_VALUE),
+                                EquipmentSlotGroup.CHEST)
+                        .add(MalumAttributes.HEALING_MULTIPLIER,
+                                new AttributeModifier(
+                                        ResourceLocation.parse("tfm:ghostveil_healing"),
+                                        0.1,
                                         AttributeModifier.Operation.ADD_VALUE),
                                 EquipmentSlotGroup.CHEST)
                         .build()));

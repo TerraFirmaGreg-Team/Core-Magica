@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.astralya.hexalia.block.custom.SmallCauldronBlock;
 import net.dries007.tfc.common.items.TFCItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -20,9 +21,9 @@ import net.minecraft.world.level.block.state.BlockState;
 @Mixin(value = SmallCauldronBlock.class, remap = false)
 public class SmallCauldronBlockMixin {
 
-    @Inject(method = "tryIgniteWithFlintAndSteel", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "tryIgniteWithFireStarter", at = @At("HEAD"), cancellable = true, remap = false)
     private void tfm$allowTFCIgnition(ItemStack stack, BlockState state, Level level,
-            net.minecraft.core.BlockPos pos, Player player,
+            BlockPos pos, Player player,
             InteractionHand hand,
             CallbackInfoReturnable<ItemInteractionResult> cir) {
 

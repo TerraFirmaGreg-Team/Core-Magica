@@ -6,7 +6,7 @@ patchouli = "1.21.1-93-neoforge"
 tfc = "4.1.0"
 etheria = "0.2.6.2"
 totemic = "1.21.1-0.12.18"
-hexalia = "1.3.1-1.21.1+neoforge"
+hexalia = "1.3.2-1.21.1+neoforge"
 enchanted = "4.2.3"
 modopedia = "1.1.11"
 hexerei = "0.5.0.3"
@@ -16,6 +16,7 @@ afc = "2.0.8-1.21"
 firmalife = "3.0.9"
 kaleidoscopecookery = "1.3.0-neoforge+mc1.21.1"
 eidolon = "8064602"
+malum = "1.8.2"
 
 [libraries]
 registrate          = { module = "com.tterrag.registrate:Registrate", version.ref = "registrate" }
@@ -32,6 +33,7 @@ modopedia           = { module = "maven.modrinth:modopedia", version.ref = "modo
 geckolib            = { module = "maven.modrinth:geckolib", version.ref = "geckolib" }
 stateobserver       = { module = "maven.modrinth:stateobserver", version.ref = "stateobserver" }
 afc                 = { module = "maven.modrinth:arborfirmacraft-(afc)", version.ref = "afc" }
+malum               = { module = "maven.modrinth:malum", version.ref = "malum" }
+eidolon             = { module = "curse.maven:eidolon-repraised-870250", version.ref = "eidolon"}
 firmalife           = { module = "maven.modrinth:firmalife", version.ref = "firmalife" }
 kaleidoscopecookery = { module = "maven.modrinth:kaleidoscope-cookery", version.ref = "kaleidoscopecookery" }
-eidolon             = { module = "curse.maven:eidolon-repraised-870250", version.ref = "eidolon"}

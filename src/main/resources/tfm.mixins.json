@@ -8,8 +8,8 @@
         "common.hexalia.RitualBrazierBlockMixin",
         "common.hexalia.RitualTableBlockEntityMixin",
         "common.hexalia.RitualTableBlockMixin",
-        "common.hexalia.SmallCauldronBlockMixin",
-        "common.hexalia.CacofeyHarvestGoalMixin"
+        "common.hexalia.CacofeyHarvestGoalMixin",
+        "common.hexalia.SmallCauldronBlockMixin"
     ],
     "package": "com.terrafirmamagica.mixins",
     "injectors": {"defaultRequire": 1},

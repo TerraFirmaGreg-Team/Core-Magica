@@ -61,6 +61,11 @@ dependencies {
     compileOnly versions.eidolon.get()
     localRuntime versions.eidolon.get()
 
+    // Malum
+
+    compileOnly versions.malum.get()
+    localRuntime versions.malum.get()
+
     // OTHER MOD DEPENDENCIES
     localRuntime versions.modopedia.get()
     localRuntime versions.geckolib.get()
