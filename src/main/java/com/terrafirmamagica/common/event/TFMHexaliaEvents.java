@@ -25,7 +25,7 @@ public class TFMHexaliaEvents {
                                         ResourceLocation.parse("tfm:ghostveil_armor"),
                                         2.0,
                                         AttributeModifier.Operation.ADD_VALUE),
-                                EquipmentSlotGroup.BODY)
+                                EquipmentSlotGroup.CHEST)
                         .build()));
     }
 }
