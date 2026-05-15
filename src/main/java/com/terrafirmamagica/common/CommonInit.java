@@ -57,5 +57,6 @@ public class CommonInit {
                 PreserveFoodRiteFactory.CODEC);
 
         TFMEidolonRegistry.init();
+        TFMBlockEntities.finaliseBEModification();
     }
 }

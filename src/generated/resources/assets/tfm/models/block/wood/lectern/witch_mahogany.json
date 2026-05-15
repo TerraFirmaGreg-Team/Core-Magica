@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/lectern",
+  "textures": {
+    "base": "tfm:block/wood/lectern/witch_mahogany/base",
+    "bottom": "hexerei:block/mahogany_planks",
+    "front": "tfm:block/wood/lectern/witch_mahogany/front",
+    "particle": "tfm:block/wood/lectern/witch_mahogany/sides",
+    "sides": "tfm:block/wood/lectern/witch_mahogany/sides",
+    "top": "tfm:block/wood/lectern/witch_mahogany/top"
+  }
+}

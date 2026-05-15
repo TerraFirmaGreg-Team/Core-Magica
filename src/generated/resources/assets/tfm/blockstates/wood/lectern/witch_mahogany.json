@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tfm:block/wood/lectern/witch_mahogany",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "tfm:block/wood/lectern/witch_mahogany"
+    },
+    "facing=south": {
+      "model": "tfm:block/wood/lectern/witch_mahogany",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tfm:block/wood/lectern/witch_mahogany",
+      "y": 270
+    }
+  }
+}

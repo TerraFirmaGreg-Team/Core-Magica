@@ -1,0 +1,6 @@
+{
+  "parent": "firmalife:block/stomping_barrel",
+  "textures": {
+    "0": "tfm:block/wood/sheet/witch_hazel"
+  }
+}

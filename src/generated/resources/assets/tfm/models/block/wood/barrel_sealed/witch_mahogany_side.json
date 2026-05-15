@@ -1,0 +1,8 @@
+{
+  "parent": "tfc:block/barrel_side_sealed",
+  "textures": {
+    "particle": "hexerei:block/mahogany_planks",
+    "planks": "hexerei:block/mahogany_planks",
+    "sheet": "tfm:block/wood/sheet/witch_mahogany"
+  }
+}

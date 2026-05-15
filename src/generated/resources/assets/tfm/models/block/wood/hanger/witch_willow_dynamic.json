@@ -1,0 +1,6 @@
+{
+  "base": {
+    "parent": "tfm:block/wood/hanger/witch_willow"
+  },
+  "loader": "firmalife:hanger"
+}

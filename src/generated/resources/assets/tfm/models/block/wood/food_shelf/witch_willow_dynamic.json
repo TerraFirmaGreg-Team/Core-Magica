@@ -1,0 +1,6 @@
+{
+  "base": {
+    "parent": "tfm:block/wood/food_shelf/witch_willow"
+  },
+  "loader": "firmalife:food_shelf"
+}

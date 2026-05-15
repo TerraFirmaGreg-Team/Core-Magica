@@ -22,10 +22,18 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 
 public enum TFMWood implements RegistryWood {
-    HEX_MAHOGANY(ResourceLocation.fromNamespaceAndPath("hexerei", "block/mahogany_planks"),
+    WITCH_MAHOGANY(ResourceLocation.fromNamespaceAndPath("hexerei", "block/mahogany_planks"),
             ResourceLocation.fromNamespaceAndPath("hexerei", "block/mahogany_log"),
             ResourceLocation.fromNamespaceAndPath("hexerei", "block/stripped_mahogany_log"),
-            MapColor.WOOD, 1f);
+            MapColor.WOOD, 0.5f),
+    WITCH_WILLOW(ResourceLocation.fromNamespaceAndPath("hexerei", "block/willow_planks"),
+            ResourceLocation.fromNamespaceAndPath("hexerei", "block/willow_log"),
+            ResourceLocation.fromNamespaceAndPath("hexerei", "block/stripped_willow_log"),
+            MapColor.WOOD, 0.5f),
+    WITCH_HAZEL(ResourceLocation.fromNamespaceAndPath("hexerei", "block/witch_hazel_planks"),
+            ResourceLocation.fromNamespaceAndPath("hexerei", "block/witch_hazel_log"),
+            ResourceLocation.fromNamespaceAndPath("hexerei", "block/stripped_witch_hazel_log"),
+            MapColor.WOOD, 0.5f);
 
     public static final TFMWood[] VALUES = values();
 

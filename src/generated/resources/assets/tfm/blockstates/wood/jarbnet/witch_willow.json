@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,open=false": {
+      "model": "tfm:block/wood/jarbnet/witch_willow_shut_dynamic",
+      "y": 90
+    },
+    "facing=east,open=true": {
+      "model": "tfm:block/wood/jarbnet/witch_willow_dynamic",
+      "y": 90
+    },
+    "facing=north,open=false": {
+      "model": "tfm:block/wood/jarbnet/witch_willow_shut_dynamic"
+    },
+    "facing=north,open=true": {
+      "model": "tfm:block/wood/jarbnet/witch_willow_dynamic"
+    },
+    "facing=south,open=false": {
+      "model": "tfm:block/wood/jarbnet/witch_willow_shut_dynamic",
+      "y": 180
+    },
+    "facing=south,open=true": {
+      "model": "tfm:block/wood/jarbnet/witch_willow_dynamic",
+      "y": 180
+    },
+    "facing=west,open=false": {
+      "model": "tfm:block/wood/jarbnet/witch_willow_shut_dynamic",
+      "y": 270
+    },
+    "facing=west,open=true": {
+      "model": "tfm:block/wood/jarbnet/witch_willow_dynamic",
+      "y": 270
+    }
+  }
+}

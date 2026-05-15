@@ -1,0 +1,18 @@
+{
+  "parent": "firmalife:block/big_barrel_item",
+  "textures": {
+    "0": "tfm:block/wood/big_barrel/witch_mahogany_3_side",
+    "1": "tfm:block/wood/big_barrel/witch_mahogany_0",
+    "10": "tfm:block/wood/big_barrel/witch_mahogany_1_top",
+    "11": "tfm:block/wood/big_barrel/witch_mahogany_2_top",
+    "12": "hexerei:block/mahogany_log",
+    "2": "tfm:block/wood/big_barrel/witch_mahogany_0_side",
+    "3": "tfm:block/wood/big_barrel/witch_mahogany_1",
+    "4": "tfm:block/wood/big_barrel/witch_mahogany_1_side",
+    "5": "tfm:block/wood/big_barrel/witch_mahogany_2",
+    "6": "tfm:block/wood/big_barrel/witch_mahogany_2_side",
+    "7": "tfm:block/wood/big_barrel/witch_mahogany_3",
+    "8": "tfm:block/wood/big_barrel/witch_mahogany_3_top",
+    "9": "tfm:block/wood/big_barrel/witch_mahogany_0_top"
+  }
+}

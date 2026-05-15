@@ -97,7 +97,7 @@ neoForge {
             programArguments.addAll '--existing', file('src/main/resources/').getAbsolutePath()
 
             String[] existingMods = new String[] {
-                    "tfc", "afc", "totemic", "hexerei"
+                    "tfc", "afc", "firmalife", "totemic", "hexerei"
             }
 
             for (String mod : existingMods) {

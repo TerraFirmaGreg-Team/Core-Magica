@@ -1,0 +1,6 @@
+{
+  "parent": "tfc:block/wood/shelf",
+  "textures": {
+    "0": "hexerei:block/mahogany_planks"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "tfc:block/scribing_table",
+  "textures": {
+    "leg": "hexerei:block/willow_log",
+    "misc": "tfc:block/wood/scribing_table/scribing_paraphernalia",
+    "particle": "hexerei:block/willow_planks",
+    "side": "hexerei:block/willow_planks",
+    "top": "tfm:block/wood/scribing_table/witch_willow"
+  }
+}

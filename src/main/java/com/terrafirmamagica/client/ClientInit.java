@@ -13,7 +13,6 @@ public class ClientInit {
         ClientInit.modBus = modBus;
         modBus.register(ClientInit.class);
         NeoForge.EVENT_BUS.register(TFMCodexHandler.class);
-
     }
 
     @SubscribeEvent

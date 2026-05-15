@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hexerei:block/mahogany_planks",
+    "east": "tfm:block/wood/workbench/witch_mahogany_side",
+    "north": "tfm:block/wood/workbench/witch_mahogany_front",
+    "particle": "tfm:block/wood/workbench/witch_mahogany_front",
+    "south": "tfm:block/wood/workbench/witch_mahogany_side",
+    "up": "tfm:block/wood/workbench/witch_mahogany_top",
+    "west": "tfm:block/wood/workbench/witch_mahogany_front"
+  }
+}

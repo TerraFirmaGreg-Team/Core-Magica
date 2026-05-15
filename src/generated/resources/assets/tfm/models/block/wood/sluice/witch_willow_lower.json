@@ -1,0 +1,6 @@
+{
+  "parent": "tfc:block/sluice_lower",
+  "textures": {
+    "texture": "tfm:block/wood/sheet/witch_willow"
+  }
+}
