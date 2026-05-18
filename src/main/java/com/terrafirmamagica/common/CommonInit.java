@@ -2,6 +2,8 @@ package com.terrafirmamagica.common;
 
 import static com.terrafirmamagica.TFMCore.REGISTRATE;
 
+import java.util.Set;
+
 import com.terrafirmamagica.TFMCore;
 import com.terrafirmamagica.common.data.*;
 import com.terrafirmamagica.common.data.blocks.TFMBlocks;
@@ -11,9 +13,12 @@ import com.terrafirmamagica.common.rite.PreserveFoodRiteFactory;
 import com.terrafirmamagica.world.feature.TFMFeatures;
 
 import net.favouriteless.enchanted.api.circle_magic.RiteFactoryRegistry;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 public class CommonInit {
@@ -57,6 +62,15 @@ public class CommonInit {
                 PreserveFoodRiteFactory.CODEC);
 
         TFMEidolonRegistry.init();
-        TFMBlockEntities.finaliseBEModification();
+    }
+
+    @SubscribeEvent
+    public static void addValidBlocksToBETypes(BlockEntityTypeAddBlocksEvent event) {
+        for (var key : TFMBlockEntities.beModification.keySet()) {
+            var beType = (BlockEntityType<?>) key.get();
+            Set<Block> blocks = TFMBlockEntities.beModification.get(key);
+
+            event.modify(beType, blocks.toArray(Block[]::new));
+        }
     }
 }
