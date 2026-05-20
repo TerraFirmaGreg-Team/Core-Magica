@@ -31,4 +31,5 @@ public class TFMEntities {
             .attributes(TFMBaldEagle::createMobAttributes)
             .renderer(() -> TFMBaldEagleRenderer::new)
             .register();
+
 }

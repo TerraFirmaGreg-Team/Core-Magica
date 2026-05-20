@@ -1,12 +1,14 @@
 package com.terrafirmamagica.common.entity.baldeagle;
 
+import com.terrafirmamagica.TFMCore;
+
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class TFMBaldEagleRenderer extends MobRenderer<TFMBaldEagle, TFMBaldEagleModel<TFMBaldEagle>> {
-    private static final ResourceLocation BALD_EAGLE_TEXTURE = ResourceLocation.fromNamespaceAndPath("totemic", "textures/entity/bald_eagle.png");
+    private static final ResourceLocation BALD_EAGLE_TEXTURE = TFMCore.id("textures/entity/bald_eagle.png");
 
     public TFMBaldEagleRenderer(EntityRendererProvider.Context ctx) {
         super(ctx, new TFMBaldEagleModel(ctx.bakeLayer(TFMBaldEagleModel.LAYER_LOCATION)), 0.4F);

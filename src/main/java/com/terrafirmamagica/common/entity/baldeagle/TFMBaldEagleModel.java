@@ -1,5 +1,7 @@
 package com.terrafirmamagica.common.entity.baldeagle;
 
+import com.terrafirmamagica.TFMCore;
+
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -8,12 +10,11 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class TFMBaldEagleModel<T extends TFMBaldEagle> extends HierarchicalModel<T> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath("totemic", "bald_eagle"), "main");
+            TFMCore.id("bald_eagle"), "main");
 
     private final ModelPart root;
     private final ModelPart head;
