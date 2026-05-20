@@ -1,0 +1,7 @@
+{
+  "parent": "tfc:block/loom",
+  "textures": {
+    "particle": "hexerei:block/mahogany_planks",
+    "texture": "hexerei:block/mahogany_planks"
+  }
+}

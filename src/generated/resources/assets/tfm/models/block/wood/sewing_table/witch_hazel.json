@@ -1,0 +1,7 @@
+{
+  "parent": "tfc:block/sewing_table",
+  "textures": {
+    "0": "hexerei:block/witch_hazel_log",
+    "1": "hexerei:block/witch_hazel_planks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "tfc:block/wood/log_fence/inventory",
+  "textures": {
+    "log": "hexerei:block/mahogany_log",
+    "planks": "hexerei:block/mahogany_planks"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tfm:block/wood/shelf/witch_hazel",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "tfm:block/wood/shelf/witch_hazel"
+    },
+    "facing=south": {
+      "model": "tfm:block/wood/shelf/witch_hazel",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tfm:block/wood/shelf/witch_hazel",
+      "y": 270
+    }
+  }
+}

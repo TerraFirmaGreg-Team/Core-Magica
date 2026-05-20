@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/lectern",
+  "textures": {
+    "base": "tfm:block/wood/lectern/witch_hazel/base",
+    "bottom": "hexerei:block/witch_hazel_planks",
+    "front": "tfm:block/wood/lectern/witch_hazel/front",
+    "particle": "tfm:block/wood/lectern/witch_hazel/sides",
+    "sides": "tfm:block/wood/lectern/witch_hazel/sides",
+    "top": "tfm:block/wood/lectern/witch_hazel/top"
+  }
+}

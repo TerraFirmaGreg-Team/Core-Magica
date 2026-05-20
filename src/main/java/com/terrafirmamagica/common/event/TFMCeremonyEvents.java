@@ -1,12 +1,13 @@
 package com.terrafirmamagica.common.event;
 
+import java.util.Objects;
+
 import com.terrafirmamagica.TFMCore;
+import com.terrafirmamagica.common.data.TFMEntities;
 
 import net.dries007.tfc.common.blockentities.CropBlockEntity;
 import net.dries007.tfc.common.blocks.crop.CropBlock;
-import net.dries007.tfc.common.entities.livestock.Age;
-import net.dries007.tfc.common.entities.livestock.Mammal;
-import net.dries007.tfc.common.entities.livestock.TFCAnimal;
+import net.dries007.tfc.common.entities.livestock.*;
 import net.dries007.tfc.util.calendar.Calendars;
 import net.dries007.tfc.util.calendar.ICalendar;
 import net.minecraft.core.BlockPos;
@@ -16,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
@@ -24,6 +26,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 
 import pokefenn.totemic.api.TotemicAPI;
 import pokefenn.totemic.api.TotemicBlockTags;
+import pokefenn.totemic.api.TotemicEntityTypeTags;
 import pokefenn.totemic.api.TotemicEntityUtil;
 import pokefenn.totemic.api.event.CeremonyEvent;
 import pokefenn.totemic.util.MiscUtil;
@@ -154,6 +157,36 @@ public class TFMCeremonyEvents {
                 .ifPresent(p -> {
                     level.setBlock(p, afcCedar.defaultBlockState(), Block.UPDATE_ALL);
                     MiscUtil.spawnServerParticles(ParticleTypes.HAPPY_VILLAGER, level, Vec3.atCenterOf(p), 10, new Vec3(0.5, 0.5, 0.5), 0);
+                });
+    }
+
+    private static final ResourceLocation BUFFALO_DANCE = ResourceLocation.parse("totemic:buffalo_dance");
+
+    @SubscribeEvent
+    public static void onBuffaloDanceCeremonyEffect(CeremonyEvent.EffectTick event) {
+        if (!event.getCeremony().getRegistryName().equals(BUFFALO_DANCE))
+            return;
+        if (!(event.getLevel() instanceof ServerLevel level))
+            return;
+
+        event.setCanceled(true);
+
+        level.getEntitiesOfClass(Mob.class, TotemicEntityUtil.getAABBAround(event.getPos(), 8),
+                mob -> mob.getType().is(TotemicEntityTypeTags.BUFFALO_DANCE_TARGETS) && mob.isAlive()).stream().limit(2).forEach(cow -> {
+                    var buffalo = TFMEntities.TFM_BUFFALO.get().create(level);
+                    if (buffalo == null)
+                        return;
+
+                    if (cow instanceof TFCAnimalProperties tfcCow) {
+                        buffalo.setGender(tfcCow.isMale() ? Gender.MALE : Gender.FEMALE);
+                    }
+
+                    buffalo.copyPosition(cow);
+                    if (cow.isLeashed())
+                        buffalo.setLeashedTo(Objects.requireNonNull(cow.getLeashHolder()), true);
+                    cow.discard();
+                    level.addFreshEntity(buffalo);
+                    MiscUtil.spawnServerParticles(ParticleTypes.HAPPY_VILLAGER, level, buffalo.position().add(0, 1, 0), 24, new Vec3(0.6, 0.5, 0.6), 1.0);
                 });
     }
 }

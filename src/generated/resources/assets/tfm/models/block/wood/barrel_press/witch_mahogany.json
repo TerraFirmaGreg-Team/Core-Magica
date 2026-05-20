@@ -1,0 +1,6 @@
+{
+  "parent": "firmalife:block/barrel_press",
+  "textures": {
+    "0": "tfm:block/wood/sheet/witch_mahogany"
+  }
+}

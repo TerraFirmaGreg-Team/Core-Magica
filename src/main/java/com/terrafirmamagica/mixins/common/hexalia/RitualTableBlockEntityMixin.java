@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -20,10 +21,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
+@SuppressWarnings("deprecation")
 @Mixin(value = RitualTableBlockEntity.class, remap = false)
 public abstract class RitualTableBlockEntityMixin {
-
+    @Unique
     private static final Field FIELD_GROWN_CROPS;
+
+    @Unique
     private static final Field FIELD_TRANSFORM_TICKS_REMAINING;
 
     static {
@@ -71,6 +75,7 @@ public abstract class RitualTableBlockEntityMixin {
         }
     }
 
+    @Unique
     private static void tfm$resetTFCCrop(Level level, BlockPos pos, BlockState state) {
         if (state.getBlock() instanceof DoubleCropBlock
                 && state.getValue(DoubleCropBlock.PART) == DoubleCropBlock.Part.TOP) {

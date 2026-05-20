@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
+@SuppressWarnings("unchecked")
 public class TFMBuffaloRenderer extends MobRenderer<TFMBuffalo, TFMBuffaloModel<TFMBuffalo>> {
     private static final ResourceLocation BUFFALO_TEXTURE = ResourceLocation.fromNamespaceAndPath("totemic", "textures/entity/buffalo.png");
 

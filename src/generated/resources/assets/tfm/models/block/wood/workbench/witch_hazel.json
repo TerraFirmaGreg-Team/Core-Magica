@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hexerei:block/witch_hazel_planks",
+    "east": "tfm:block/wood/workbench/witch_hazel_side",
+    "north": "tfm:block/wood/workbench/witch_hazel_front",
+    "particle": "tfm:block/wood/workbench/witch_hazel_front",
+    "south": "tfm:block/wood/workbench/witch_hazel_side",
+    "up": "tfm:block/wood/workbench/witch_hazel_top",
+    "west": "tfm:block/wood/workbench/witch_hazel_front"
+  }
+}

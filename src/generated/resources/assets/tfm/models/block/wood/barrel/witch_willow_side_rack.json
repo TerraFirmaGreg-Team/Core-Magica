@@ -1,0 +1,8 @@
+{
+  "parent": "tfc:block/barrel_side_rack",
+  "textures": {
+    "particle": "hexerei:block/willow_planks",
+    "planks": "hexerei:block/willow_planks",
+    "sheet": "tfm:block/wood/sheet/witch_willow"
+  }
+}

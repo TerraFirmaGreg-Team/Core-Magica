@@ -1,0 +1,7 @@
+{
+  "parent": "tfc:block/tool_rack",
+  "textures": {
+    "particle": "hexerei:block/mahogany_planks",
+    "texture": "hexerei:block/mahogany_planks"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "parent": "firmalife:block/big_barrel_5",
+  "textures": {
+    "0": "tfm:block/wood/big_barrel/witch_willow_3_side",
+    "1": "tfm:block/wood/big_barrel/witch_willow_0",
+    "10": "tfm:block/wood/big_barrel/witch_willow_1_top",
+    "11": "tfm:block/wood/big_barrel/witch_willow_2_top",
+    "12": "hexerei:block/willow_log",
+    "2": "tfm:block/wood/big_barrel/witch_willow_0_side",
+    "3": "tfm:block/wood/big_barrel/witch_willow_1",
+    "4": "tfm:block/wood/big_barrel/witch_willow_1_side",
+    "5": "tfm:block/wood/big_barrel/witch_willow_2",
+    "6": "tfm:block/wood/big_barrel/witch_willow_2_side",
+    "7": "tfm:block/wood/big_barrel/witch_willow_3",
+    "8": "tfm:block/wood/big_barrel/witch_willow_3_top",
+    "9": "tfm:block/wood/big_barrel/witch_willow_0_top"
+  }
+}

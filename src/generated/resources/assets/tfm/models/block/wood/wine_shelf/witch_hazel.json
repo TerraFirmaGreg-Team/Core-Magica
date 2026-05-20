@@ -1,0 +1,8 @@
+{
+  "parent": "firmalife:block/wine_shelf",
+  "textures": {
+    "0": "hexerei:block/witch_hazel_planks",
+    "2": "tfm:block/wood/sheet/witch_hazel",
+    "3": "hexerei:block/stripped_witch_hazel_log"
+  }
+}

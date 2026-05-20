@@ -1,0 +1,7 @@
+{
+  "parent": "tfc:block/sewing_table",
+  "textures": {
+    "0": "hexerei:block/mahogany_log",
+    "1": "hexerei:block/mahogany_planks"
+  }
+}

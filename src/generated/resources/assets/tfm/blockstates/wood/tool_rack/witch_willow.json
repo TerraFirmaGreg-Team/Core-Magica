@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tfm:block/wood/tool_rack/witch_willow",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "tfm:block/wood/tool_rack/witch_willow",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "tfm:block/wood/tool_rack/witch_willow"
+    },
+    "facing=west": {
+      "model": "tfm:block/wood/tool_rack/witch_willow",
+      "y": 90
+    }
+  }
+}

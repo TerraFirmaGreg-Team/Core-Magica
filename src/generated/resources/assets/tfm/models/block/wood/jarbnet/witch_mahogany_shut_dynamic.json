@@ -1,0 +1,6 @@
+{
+  "base": {
+    "parent": "tfm:block/wood/jarbnet/witch_mahogany_shut"
+  },
+  "loader": "firmalife:jarbnet"
+}

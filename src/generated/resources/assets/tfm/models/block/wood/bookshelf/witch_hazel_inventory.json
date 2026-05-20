@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/chiseled_bookshelf_inventory",
+  "textures": {
+    "front": "tfm:block/wood/bookshelf/witch_hazel_empty",
+    "side": "tfm:block/wood/bookshelf/witch_hazel_side",
+    "top": "tfm:block/wood/bookshelf/witch_hazel_top"
+  }
+}

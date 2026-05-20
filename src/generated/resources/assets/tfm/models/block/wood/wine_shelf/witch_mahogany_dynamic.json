@@ -1,0 +1,6 @@
+{
+  "base": {
+    "parent": "tfm:block/wood/wine_shelf/witch_mahogany"
+  },
+  "loader": "firmalife:wine_shelf"
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hexerei:block/willow_planks",
+    "east": "tfm:block/wood/workbench/witch_willow_side",
+    "north": "tfm:block/wood/workbench/witch_willow_front",
+    "particle": "tfm:block/wood/workbench/witch_willow_front",
+    "south": "tfm:block/wood/workbench/witch_willow_side",
+    "up": "tfm:block/wood/workbench/witch_willow_top",
+    "west": "tfm:block/wood/workbench/witch_willow_front"
+  }
+}

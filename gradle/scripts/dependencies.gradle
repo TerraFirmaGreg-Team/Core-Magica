@@ -24,6 +24,18 @@ dependencies {
     compileOnly versions.tfc.get()
     localRuntime versions.tfc.get()
 
+    // AFC
+    compileOnly versions.afc.get()
+    localRuntime versions.afc.get()
+
+    // Firmalife
+    compileOnly versions.firmalife.get()
+    localRuntime versions.firmalife.get()
+
+    // Kaleidoscope Cookery
+    // compileOnly versions.kaleidoscopecookery.get()
+    // localRuntime versions.kaleidoscopecookery.get()
+
     // Etheria
     compileOnly versions.etheria.get()
     localRuntime versions.etheria.get()
@@ -44,8 +56,22 @@ dependencies {
     compileOnly versions.hexerei.get()
     localRuntime versions.hexerei.get()
 
+    // Eidolon Repraised
+    compileOnly versions.eidolon.get()
+    localRuntime versions.eidolon.get()
+
+    // Malum
+    compileOnly versions.malum.get()
+    localRuntime versions.malum.get()
+
+    // Born in Chaos
+    compileOnly versions.borninchaos.get()
+    localRuntime versions.borninchaos.get()
+
     // OTHER MOD DEPENDENCIES
     localRuntime versions.modopedia.get()
     localRuntime versions.geckolib.get()
     localRuntime versions.stateobserver.get()
+    localRuntime versions.curios.get()
+    localRuntime versions.lodestone.get()
 }
