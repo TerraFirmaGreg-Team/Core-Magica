@@ -1,5 +1,4 @@
 {
-  "entity.tfm.bald_eagle": "ǝןbɐƎ pןɐᗺ",
   "block.tfm.wood.barrel.witch_hazel": "ןǝzɐH ɥɔʇıʍ/ןǝɹɹɐq/pooM",
   "block.tfm.wood.barrel.witch_mahogany": "ʎuɐboɥɐW ɥɔʇıʍ/ןǝɹɹɐq/pooM",
   "block.tfm.wood.barrel.witch_willow": "ʍoןןıM ɥɔʇıʍ/ןǝɹɹɐq/pooM",
@@ -57,5 +56,6 @@
   "block.tfm.wood.workbench.witch_hazel": "ןǝzɐH ɥɔʇıʍ/ɥɔuǝqʞɹoʍ/pooM",
   "block.tfm.wood.workbench.witch_mahogany": "ʎuɐboɥɐW ɥɔʇıʍ/ɥɔuǝqʞɹoʍ/pooM",
   "block.tfm.wood.workbench.witch_willow": "ʍoןןıM ɥɔʇıʍ/ɥɔuǝqʞɹoʍ/pooM",
+  "entity.tfm.bald_eagle": "ǝןbɐƎ pןɐᗺ",
   "entity.tfm.buffalo": "oןɐɟɟnᗺ"
 }
