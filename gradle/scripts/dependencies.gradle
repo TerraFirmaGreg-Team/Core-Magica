@@ -68,6 +68,10 @@ dependencies {
     compileOnly versions.borninchaos.get()
     localRuntime versions.borninchaos.get()
 
+    // Witchery
+    compileOnly versions.witchery.get()
+    localRuntime versions.witchery.get()
+
     // OTHER MOD DEPENDENCIES
     localRuntime versions.modopedia.get()
     localRuntime versions.geckolib.get()

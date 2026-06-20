@@ -20,6 +20,7 @@ malum = "1.8.2"
 curios = "9.5.1+1.21.1"
 lodestone = "1.8.2"
 borninchaos = "SmoP64vt"
+witchery = "8207191"
 
 [libraries]
 registrate          = { module = "com.tterrag.registrate:Registrate", version.ref = "registrate" }
@@ -43,3 +44,4 @@ kaleidoscopecookery = { module = "maven.modrinth:kaleidoscope-cookery", version.
 curios              = { module = "maven.modrinth:curios", version.ref = "curios" }
 lodestone           = { module = "maven.modrinth:lodestonelib", version.ref = "lodestone" }
 borninchaos         = { module = "maven.modrinth:borninchaos", version.ref = "borninchaos" }
+witchery            = { module = "curse.maven:just-another-witchery-remake-1125946", version.ref = "witchery" }

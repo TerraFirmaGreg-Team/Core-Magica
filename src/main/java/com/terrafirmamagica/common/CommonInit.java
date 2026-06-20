@@ -8,6 +8,7 @@ import com.terrafirmamagica.common.data.blocks.TFMBlocks;
 import com.terrafirmamagica.common.eidolon.TFMEidolonRegistry;
 import com.terrafirmamagica.common.food.TFMFoodIngredient;
 import com.terrafirmamagica.common.rite.PreserveFoodRiteFactory;
+import com.terrafirmamagica.compat.witchery.TFMWitcheryRituals;
 import com.terrafirmamagica.world.feature.TFMFeatures;
 
 import net.favouriteless.enchanted.api.circle_magic.RiteFactoryRegistry;
@@ -48,6 +49,7 @@ public class CommonInit {
         TFMFoodIngredient.register(modBus);
         TFMFoodTraits.register(modBus);
         TFMCeremonies.CEREMONIES.register(modBus);
+        TFMWitcheryRituals.register(modBus);
     }
 
     @SubscribeEvent
